@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+ @import 'bootstrap-sprockets';
+ @import 'bootstrap';
+
+
+
+ .navbar-brand,
+ .navbar-nav li a {
+   line-height: 75px;
+   height: 90px;
+   padding-top: 0;
+ }
+
+
+.jumbotron,
+.jubotime li a {
+  line-height: 2;
+  height: 2;
+}
