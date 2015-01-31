@@ -17,15 +17,29 @@
 <%= yield %>
 
 <footer>
-  <div class="container">
-  <hr></hr>
+<hr></hr>
 
-  <u><%= link_to "About", about_path %></u>
-  |
-  <u><%= link_to "Terms", terms_path %></u>
 
-  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <u><%= link_to "About", about_path %></u>
+      |
+      <u><%= link_to "Terms", terms_path %></u>
+    </div>
+
+    <div class="col-md-3 container-fluid">
+      <div class="links-right">
+        <%= link_to(image_tag("linkedinlink.jpg", :width => 40, :height => 35), "http://www.linkedin.com") %>
+        <%= link_to(image_tag("githublink.png",   :width => 40, :height => 40),  "http://www.github.com") %>
+        <%= link_to(image_tag("twitterlink.png",  :width => 40, :height => 40), "http://www.twitter.com") %>
+        <%= link_to(image_tag("gschoollink.png",  :width => 40, :height => 40), "http://www.students.gschool.it") %>
+      </div>
+    </div>
+
+</div>
 </footer>
+
+
 
 
 </body>
