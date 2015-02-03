@@ -27,19 +27,16 @@
     </div>
 
     <div class="col-md-4 container-fluid">
-      <div class="links-right">
-        <%= link_to(image_tag("linkedinlink.jpg", :width => 32, :height => 28), "https://www.linkedin.com/profile/public-profile-settings?trk=prof-edit-edit-public_profile") %>
-        <%= link_to(image_tag("githublink.png",   :width => 30, :height => 30),  "https://github.com/chaseterzian") %>
-        <%= link_to(image_tag("twitterlink.png",  :width => 30, :height => 30), "http://twitter.com/chaseterzian") %>
-        <%= link_to(image_tag("gschoollink.png",  :width => 25, :height => 32), "https://students.gschool.it") %>
+        <%= link_to(image_tag("gschoollink.png", class: "links-right"), "https://students.gschool.it") %>
+        <%= link_to(image_tag("twitterlink.png", class: "links-right"), "http://twitter.com/chaseterzian") %>
+        <%= link_to(image_tag("githublink.png", class: "links-right"),  "https://github.com/chaseterzian") %>
+        <%= link_to(image_tag("linkedinlink.jpg", class: "links-right"), "https://www.linkedin.com/profile/public-profile-settings?trk=prof-edit-edit-public_profile") %>
       </div>
     </div>
   </div>
 
 </div>
 </footer>
-
-
 
 
 </body>

@@ -16,11 +16,10 @@
  @import 'bootstrap-sprockets';
  @import 'bootstrap';
 
- body        { padding-top: 70px;   }
+ body        {padding-top:    70px; }
 
  footer      {padding-bottom: 20px; }
 
-.links-right {float: right;         }
-
-.links-padding { padding-right: 20px
-}
+.links-right {float:          right;
+              height:         28px;
+              padding-left:   12px; }
