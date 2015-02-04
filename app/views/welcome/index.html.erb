@@ -62,11 +62,11 @@
   </div>
 
   <% comments = {cayla: "\"gCamp has changed my life!  It's the best tool I've ever used.\"",
-                 cayla_com: "-Cayla Hayes",
+                 cayla_com: " Cayla Hayes",
                  leta: "\"Before gCamp I was a disorderly slob.  Now I'm more organized than I've ever been\"",
-                 leta_com: "-Leta Jaskolski",
+                 leta_com: " Leta Jaskolski",
                  lavern: "\"Don't hesitate - sign up right now! You'll never be the same.\"",
-                 lavern_com: "-Lavern Upton"}
+                 lavern_com: " Lavern Upton"}
 
                  cayla_comm = comments[:cayla]
                  cayla_nam = comments[:cayla_com]
@@ -76,11 +76,11 @@
                  lavern_nam = comments[:lavern_com] %>
 
                  <p><%= cayla_comm  %></p>
-                 <p><div class="text-muted"><%= cayla_nam  %></div></p>
+                 <em><p><div class="text-muted">&mdash;<%= cayla_nam  %></div></p></em>
                  <p><%= leta_comm   %></p>
-                 <p><div class="text-muted"><%= leta_nam  %></div></p>
+                 <em><p><div class="text-muted">&mdash;<%= leta_nam  %></div></p></em>
                  <p><%= lavern_comm %></p>
-                 <p><div class="text-muted"><%= lavern_nam  %></div></p>
+                 <em><p><div class="text-muted">&mdash;<%= lavern_nam  %></div></p></em>
 
 
 </div>
