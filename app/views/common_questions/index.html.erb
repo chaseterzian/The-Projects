@@ -5,18 +5,18 @@
     <hr></hr>
 
   <ul>
-    <%@faqs[0].each do |question,slug|%>
-    <li><%= link_to question, "##{slug}"%></li>
+    <% @faqs[0].each do |question, slug| %>
+    <li><%= link_to question, "##{slug}" %></li>
     <% end %>
   </ul>
 
   <div class ="row">
     <div class="col-md-6">
       <% @faqs[1].each do |question, answer| %>
-      <%= content_tag :a,'',name: question.parameterize %>
+      <%= content_tag :a, " ", name: question.parameterize %>
       <h3><%= question %></h3>
       <p><%= answer %> </p>
-      <p><%= link_to 'Top','#'%></p>
+      <p><%= link_to 'Top', '#'%></p>
       <% end %>
     </div>
   </div>
