@@ -1,7 +1,18 @@
-#BT
-class CommonQuestionsController < ApplicationController
+class CommonQuestionsController<ApplicationController
 
-    def index
-      @results = CommonQuestion.create_array
-    end
+  def index
+    answers = CommonQuestion.get_question_answer
+    slugs = CommonQuestion.get_slug
+    @faqs=[slugs,answers]
+  end
+
 end
+#class CommonQuestionsController < ApplicationController
+
+#  def index
+#    answers = CommonQuestion.get_question_answer
+#    slugs = CommonQuestion.get_slug
+#    @faqs=[slugs, answers]
+#  end
+
+#end
