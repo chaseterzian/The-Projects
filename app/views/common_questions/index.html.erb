@@ -1,18 +1,23 @@
-#BT
 <div class="container">
-  <div class="page-header">
+<div class="page-header">
+
+  <h1>Frequently Asked Questions</h1>
+  <hr></hr>
 
 
+  <ul>
+    <% @results.each do |info| %>
+    <li><a href="#<%= info.slug %>"><%= info.question %></a></li>
+    <% end %>
+  </ul>
+
+    <% @results.each do |info| %>
+    <a name="<%= info.slug %>"></a>
+    <h3><%= info.question %></h3>
+    <p><%= info.answer %></p>
+    <%= link_to "top", faq_path  %>
+    <% end %>
 
 
-
-
-
-
-
-
-
-
-
-  </div>
+</div>
 </div>
