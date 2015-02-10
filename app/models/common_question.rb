@@ -22,11 +22,11 @@ class CommonQuestion
   end
 
   def self.get_slug
-    question_slug = {}
-    @questions_answers.each_key do |q|
-    question_slug.store(q, q.parameterize)
+      question_slug = {}
+      @questions_answers.each_key do |q|
+      question_slug.store(q, q.parameterize)
     end
-    question_slug
+      question_slug
   end
 
 
