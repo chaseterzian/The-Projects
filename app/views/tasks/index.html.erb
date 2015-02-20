@@ -2,11 +2,12 @@
 <div class="page-header">
 
 <h1>Listing Tasks</h1>
+<hr></hr>
 <div class="empty-line-2"></div>
 
 <% @tasks.each do |task| %>
 <%= task.description %>
-<div class="empty-line-1"></div>
+<hr></hr>
 <% end %>
 
 <u><%= link_to "New Task", new_task_path %></u>

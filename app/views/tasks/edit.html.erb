@@ -1,8 +1,22 @@
-<%= form_for @task do |f| %>
+<div class="container">
+<div class="page-header">
 
-<%= f.label :description %>
-<%= f.text_area :description %>
-<div>
-<%= f.submit "Submit Edit" %>
+<h1>New Task</h1>
+<hr></hr>
+<div class="empty-line-2"></div>
+
+
+<%= form_for @task do |f| %>
+<div><%= f.label :description %></div>
+<div><%= f.text_field :description %></div>
+<div class="empty-line-1"></div>
+
+<%= f.submit "Edit Task" %>
+<div class="empty-line-2"></div>
+
 
 <% end %>
+
+
+</div>
+</div>

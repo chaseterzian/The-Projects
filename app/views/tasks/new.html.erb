@@ -1,8 +1,22 @@
+<div class="container">
+<div class="page-header">
+
+<h1>New Task</h1>
+<hr></hr>
+<div class="empty-line-2"></div>
+
+
 <%= form_for @task do |f| %>
+<div><%= f.label :description %></div>
+<div><%= f.text_field :description %></div>
+<div class="empty-line-1"></div>
 
-<%= f.label :description %>
-<%= f.text_area :description %>
-
-<%= f.submit "Create New Task" %>
+<%= f.submit "Create Task" %>
+<div class="empty-line-2"></div>
+<u><%= link_to "Back", tasks_path %><u>
 
 <% end %>
+
+
+</div>
+</div>
