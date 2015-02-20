@@ -1,9 +1,15 @@
-<%= link_to "Add New Task", new_task_path %>
-<hr>
-<% @task.each do |task| %>
+<div class="container">
+<div class="page-header">
+
+<h1>Listing Tasks</h1>
+<div class="empty-line-2"></div>
+
+<% @tasks.each do |task| %>
 <%= task.description %>
-<div>
-<%= link_to "View Task", task_path(task) %>
-<%= link_to "Delete Task", task_path(task), method: "delete" %>
-<hr>
+<div class="empty-line-1"></div>
 <% end %>
+
+<u><%= link_to "New Task", new_task_path %></u>
+
+</div>
+</div>
