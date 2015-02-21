@@ -9,7 +9,7 @@
 <p><%= task.description %>
 <u><%= link_to "Show", task_path(task) %></u>
 |
-<u><%= link_to "Edit", task_path(task) %></u>
+<u><%= link_to "Edit", edit_task_path(task) %></u>
 |
 <u><%= link_to "Destroy", task_path(task), method: "delete" %></u></p>
 <% end %>

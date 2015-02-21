@@ -14,7 +14,21 @@
     </div>
   </nav>
 
+<div class="container">
+  <% if flash[:created].present? %>
+  <%= flash[:created] %>
+  </hr>
+  <% end %>
+
+  <% if flash[:updated].present? %>
+  <%= flash[:updated] %>
+  </hr>
+  <% end %>
+</div>
+  
+
 <%= yield %>
+
 
 <footer>
 <div class="container">
