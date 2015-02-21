@@ -2,12 +2,16 @@
 <div class="page-header">
 
 <h1>Listing Tasks</h1>
-<hr></hr>
-<div class="space2"></div>
+
+<h4>Description</h4>
 
 <% @tasks.each do |task| %>
-<%= task.description %>
-<hr></hr>
+<p><%= task.description %>
+<u><%= link_to "Show", task_path(task) %></u>
+|
+<u><%= link_to "Edit", task_path(task) %></u>
+|
+<u><%= link_to "Destroy", task_path(task), method: "delete" %></u></p>
 <% end %>
 
 <u><%= link_to "New Task", new_task_path %></u>

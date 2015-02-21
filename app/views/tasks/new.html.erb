@@ -2,18 +2,15 @@
 <div class="page-header">
 
 <h1>New Task</h1>
-<hr></hr>
-<div class="space2"></div>
-
-
 <%= form_for @task do |f| %>
-<div><%= f.label :description %></div>
-<div><%= f.text_field :description %></div>
-<div class="space1"></div>
 
-<%= f.submit "Create Task" %>
-<div class="space2"></div>
-<u><%= link_to "Back", tasks_path %><u>
+<p><div><%= f.label :description %></div>
+<div><%= f.text_field :description %></div></p>
+
+
+<p><%= f.submit "Create Task" %></p>
+
+<p><u><%= link_to "Back", tasks_path %><u></p>
 
 <% end %>
 
