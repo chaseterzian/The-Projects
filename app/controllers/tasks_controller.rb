@@ -11,12 +11,13 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      flash[:created] = "Task was successfully created"
+      flash[:created] = ##message in application.html.erb
       redirect_to task_path(@task)
     else
       render :new
     end
   end
+
 
 
   def edit
