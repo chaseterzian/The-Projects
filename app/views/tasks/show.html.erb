@@ -2,13 +2,10 @@
 <div class="page-header">
 
 
+<%= link_to "Edit", edit_task_path, class:"btn btn-info pull-right" %>
+<h1><%= @task.description %></h1>
 
 
-<p><b>Description:</b>
-<%= @task.description %></p>
-
-<u><%= link_to "Edit", edit_task_path %></u>
-|
 <u><%= link_to "Back", tasks_path %></u>
 
 
