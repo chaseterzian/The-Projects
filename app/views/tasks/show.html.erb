@@ -5,9 +5,12 @@
 <%= link_to "Edit", edit_task_path, class:"btn btn-info pull-right" %>
 <h1><%= @task.description %></h1>
 
+<hr>
 
-<u><%= link_to "Back", tasks_path %></u>
-
+<ol class="breadcrumb">
+  <li><a><%= link_to "Tasks", tasks_path %></a></li>
+  <li class="active"><%= @task.description %></li>
+</ol>
 
 
 </div>
