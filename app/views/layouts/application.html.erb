@@ -16,7 +16,7 @@
 
 <div class="container">
   <% if flash[:created].present? %>
-  <div class="alert alert-success text-center" role="alert">Task was successfully created</div>
+  <div class="alert alert-success text-center" role="alert"><%= flash[:created] %></div>
   </hr>
   <% end %>
 
