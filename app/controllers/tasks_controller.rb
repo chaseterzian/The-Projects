@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update(task_params)
       flash[:updated] = "Task was successfully updated"
-      redirect_to tasks_path
+      redirect_to task_path  ##removed s togoto show
     else
       render :edit
     end

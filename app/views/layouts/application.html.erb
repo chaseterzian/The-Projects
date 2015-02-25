@@ -22,7 +22,7 @@
   <% end %>
 
   <% if flash[:updated].present? %>
-  <%= flash[:updated] %>
+  <div class="alert alert-success text-center" role="alert"><%= flash[:updated] %></div>
   </hr>
   <% end %>
 </div>
