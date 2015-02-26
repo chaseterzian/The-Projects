@@ -2,19 +2,31 @@
 <div class="page-header">
 
 <h1>Editing Task</h1>
-<%= form_for @task do |f| %>
+<hr>
+<%= form_for @task, html: { class: "form-horizontal" } do |f| %>
 
-<p><div><%= f.label :description %></div>
-<div><%= f.text_field :description %></div></p>
+<ol class="breadcrumb">
+  <li><%= link_to "Tasks", tasks_path %></li>
+  <li class="active"><%= "New Task" %></li>
+</ol>
 
-<p><%= f.submit "Update task" %></p>
 
-<u><%= link_to "Show", task_path %></u>
-|
-<u><%= link_to "Back", tasks_path %></u>
+<div class="form-group">
+  <%= f.label :description, class: "col-md-2 control-label" %>
+  <div class="col-md-6">
+  <%= f.text_field :description, class: "form-control" %>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <div class="col-md-offset-2 col-md-3">
+  <%= f.submit "Update task", class: "btn btn-primary" %>
+  <%= link_to "Cancel", tasks_path, class: "btn btn-default" %>
+  </div>
+</div>
 
 <% end %>
-
 
 </div>
 </div>
