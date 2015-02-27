@@ -5,3 +5,103 @@
     <th>Description</th>
   </tr>
 </thead>
+
+
+
+
+<table class="table">
+  <div class="form-horizontal">
+    <thead>
+      <tr>
+        <th>Description   Due Date</th>
+      </tr>
+    </thead>
+  </div>
+
+
+
+
+<div class="container">
+  <div class="page-header">
+
+    <%= link_to "New Task", new_task_path, class: "btn btn-info pull-right" %>
+    <h1>Tasks</h1>
+    <hr>
+
+    <table class="table">
+
+        <thead>
+          <tr>
+            <th>Description</th>
+          </tr>
+        </thead>
+
+        <% @tasks.each do |task| %>
+
+        <tr>
+          <td>
+
+            <% if task.complete == true %>
+            <s><%= link_to task.description, task_path(task) %></s>
+            <% else %>
+            <%= link_to task.description, task_path(task) %>
+            <% end %>
+
+
+            <div class="pull-right">
+              <%= link_to "Edit", edit_task_path(task), class: "btn btn-info" %>
+              <%= link_to "Delete", task_path(task), method: "delete", class: "btn btn-danger" %>
+            </div>
+
+          </td>
+        </tr>
+
+        <% end %>
+</table>
+
+    </div>
+  </div>
+
+
+
+
+  <div class = "page-header">
+
+       <div class = "pull-right">
+         <%= link_to 'New Task', new_task_path, class: "btn btn-info" %>
+       </div>
+       <h1>Tasks</h1>
+     </div>
+
+     <table class = "table">
+         <thead>
+         <tr>
+           <div class = "col-sm-1">
+             <th>Description</th>
+           </div>
+           <div class = "col-sm-3">
+           <th>Due On</th>
+         </div>
+         </tr>
+       </thead>
+       <tbody>
+         <% @tasks.each do |task| %>
+         <tr>
+           <% if task.complete %>
+               <td class = "col-sm-3"><s><%= link_to task.description, task_path(task) %></s></td>
+           <% else %>
+               <td><%= link_to task.description, task_path(task) %></td>
+           <% end %>
+
+
+              <td>
+           <div class = "pull-right">
+             <%= link_to 'Edit', edit_task_path(task), class: "btn btn-info" %>
+             <%= link_to "Delete", task, method: :delete, class: "btn btn-danger" %>
+           </div>
+          </td>
+         </tr>
+         <% end %>
+       </tbody>
+     </table>
+  </div>
