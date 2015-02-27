@@ -5,44 +5,33 @@
     <h1>Tasks</h1>
     <hr>
 
-
     <table class="table">
       <thead>
         <tr>
-          <td>
-            <th class="col-md-4">Description</th>
-            <th class="col-md-4">sdfsdaf</th>
-            <th class="col-md-4"></th>
-          </td>
+          <th class="col-md-3">Description</th>
+          <th class="col-md-4">Due Date</th>
+          <th class="col-md-5"></th>
         </tr>
       </thead>
-
       <% @tasks.each do |task| %>
       <tr>
-        <td>
-          <th>
-            <% if task.complete == true %>
-            <s><%= link_to task.description, task_path(task) %></s>
-            <% else %>
-            <%= link_to task.description, task_path(task) %>
-            <% end %>
-          </th>
-
-          <th class="col-md-4">
-          </th>
-
-          <th class="col-md-4">
-            <div class="pull-right">
-              <%= link_to "Edit", edit_task_path(task), class: "btn btn-info" %>
-              <%= link_to "Delete", task_path(task), method: "delete", class: "btn btn-danger" %>
-            </div>
-          </th>
-
-          <th class="col-md-4">
-          </th>
+        <td class="col-md-3">
+          <% if task.complete == true %>
+          <s><%= link_to task.description, task_path(task) %></s>
+          <% else %>
+          <%= link_to task.description, task_path(task) %>
+          <% end %>
+        </td>
+        <td class="col-md-4">
+        </td>
+        <td class="col-md-5">
+          <div class="pull-right">
+            <%= link_to "Edit", edit_task_path(task), class: "btn btn-info" %>
+            <%= link_to "Delete", task_path(task), method: "delete", class: "btn btn-danger" %>
+          </div>
         </td>
       </tr>
       <% end %>
     </table>
-    </div>
+  </div>
 </div>
