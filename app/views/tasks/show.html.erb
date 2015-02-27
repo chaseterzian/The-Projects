@@ -11,10 +11,13 @@
 
   <ol class="breadcrumb">
     <li><a><%= link_to "Tasks", tasks_path %></a></li>
-
-
     <li class="active"><%= @task.description %></li>
   </ol>
+
+  <% if @taskdate.date %>
+  <b>Due Date:</b>
+  <%= @taskdate.date.strftime("%m/%d/%Y") %>
+  <% end %>
 
 
 

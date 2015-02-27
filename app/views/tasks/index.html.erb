@@ -8,13 +8,15 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="col-md-3">Description</th>
-          <th class="col-md-4">Due Date</th>
+          <th class="col-md-5">Description</th>
+          <th class="col-md-2">Due On</th>
           <th class="col-md-5"></th>
         </tr>
       </thead>
+
       <% @tasks.each do |task| %>
       <tr>
+
         <td class="col-md-3">
           <% if task.complete == true %>
           <s><%= link_to task.description, task_path(task) %></s>
@@ -22,8 +24,13 @@
           <%= link_to task.description, task_path(task) %>
           <% end %>
         </td>
+
         <td class="col-md-4">
+          <% if task.duedate %>
+          <%= task.duedate.strftime("%m/%d/%Y") %>  <!--weird format, upcase year-->
+          <% end %>
         </td>
+
         <td class="col-md-5">
           <div class="pull-right">
             <%= link_to "Edit", edit_task_path(task), class: "btn btn-info" %>

@@ -10,7 +10,6 @@
       <li class="active"><%= "New Task" %></li>
     </ol>
 
-
     <div class="form-group">
       <%= f.label :description, class: "col-md-2 control-label" %>
       <div class="col-md-6">
@@ -18,6 +17,12 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <%= f.label :duedate, class: "col-md-2 control-label" %>
+      <div class="col-md-3">
+        <%= f.date_field :duedate, class: "form-control" %>
+      </div>
+    </div>
 
     <div class ="form-group">
       <div class = "col-sm-offset-2 col-sm-10">
@@ -26,7 +31,7 @@
       </div>
     </div>
 
-    
+
 
 
     <div class="form-group">
