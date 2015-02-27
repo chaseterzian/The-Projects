@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     get "/terms" => "terms#terms"
     get "/about" => "about#about"
     get "/faq" => "common_questions#common_questions"
+
     #get "/tasks" => "tasks#tasks"
 
     resources :tasks
+    resources :users
 end

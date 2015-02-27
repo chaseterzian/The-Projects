@@ -18,7 +18,7 @@
     </thead>
   </div>
 
-
+________________________________________
 
 
 <div class="container">
@@ -63,7 +63,7 @@
   </div>
 
 
-
+___________________________________________________
 
   <div class = "page-header">
 
@@ -105,3 +105,64 @@
        </tbody>
      </table>
   </div>
+
+  __________________________________________
+
+  <div class="container"
+    <div class="page-header">
+
+      <%= link_to "New Task", new_task_path, class: "btn btn-info pull-right" %>
+      <h1>Tasks</h1>
+      <hr>
+
+  </div>
+
+  </div>
+      <table class="table">
+
+          <thead>
+            <tr>
+              <td>
+              <th class="col-md-4">Description</th>
+
+
+               <th class="col-md-4">sdfsdaf</th>
+               <th class="col-md-4"></th>
+            </td>
+          </tr>
+
+        </thead>
+
+
+        <% @tasks.each do |task| %>
+
+        <tr>
+  <td>
+    <th>
+
+            <% if task.complete == true %>
+            <s><%= link_to task.description, task_path(task) %></s>
+            <% else %>
+            <%= link_to task.description, task_path(task) %>
+            <% end %>
+  </th>
+
+
+  <th></th>
+
+
+  <th>
+            <div class="pull-right">
+              <%= link_to "Edit", edit_task_path(task), class: "btn btn-info" %>
+              <%= link_to "Delete", task_path(task), method: "delete", class: "btn btn-danger" %>
+            </div>
+  <th></th>
+          </td>
+
+
+
+
+      </tr>
+
+        <% end %>
+      </table>

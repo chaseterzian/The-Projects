@@ -5,38 +5,44 @@
     <h1>Tasks</h1>
     <hr>
 
+
     <table class="table">
-
-
-        <div class="form-horizontal">
-          <thead>
-            <tr>
-              <th>Description   Due Date</th>
-            </tr>
-          </thead>
-        </div>
-
-        <% @tasks.each do |task| %>
-
+      <thead>
         <tr>
           <td>
+            <th class="col-md-4">Description</th>
+            <th class="col-md-4">sdfsdaf</th>
+            <th class="col-md-4"></th>
+          </td>
+        </tr>
+      </thead>
 
+      <% @tasks.each do |task| %>
+      <tr>
+        <td>
+          <th>
             <% if task.complete == true %>
             <s><%= link_to task.description, task_path(task) %></s>
             <% else %>
             <%= link_to task.description, task_path(task) %>
             <% end %>
+          </th>
 
+          <th class="col-md-4">
+          </th>
+
+          <th class="col-md-4">
             <div class="pull-right">
               <%= link_to "Edit", edit_task_path(task), class: "btn btn-info" %>
               <%= link_to "Delete", task_path(task), method: "delete", class: "btn btn-danger" %>
             </div>
+          </th>
 
-          </td>
-        </tr>
-
-        <% end %>
-</table>
-
+          <th class="col-md-4">
+          </th>
+        </td>
+      </tr>
+      <% end %>
+    </table>
     </div>
-  </div>
+</div>
