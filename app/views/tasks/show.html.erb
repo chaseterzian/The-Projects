@@ -1,14 +1,23 @@
 <div class="container">
-<div class="page-header">
+  <div class="page-header">
 
-<%= link_to "Edit", edit_task_path, class:"btn btn-info pull-right" %>
-<h1><%= @task.description %></h1>
-<hr>
+  <%= link_to "Edit", edit_task_path, class:"btn btn-info pull-right" %>
+  <% if @task.complete == true %>
+  <s><h1><%= @task.description %></h1></s>
+  <% else %>
+  <h1><%= @task.description %></h1>
+  <% end %>
+  <hr>
 
-<ol class="breadcrumb">
-  <li><a><%= link_to "Tasks", tasks_path %></a></li>  
-  <li class="active"><%= @task.description %></li>
-</ol>
+  <ol class="breadcrumb">
+    <li><a><%= link_to "Tasks", tasks_path %></a></li>
+
+
+    <li class="active"><%= @task.description %></li>
+  </ol>
+
+
+
 
 
 </div>

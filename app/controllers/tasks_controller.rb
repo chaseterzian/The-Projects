@@ -22,6 +22,7 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
+                                      #@name = "Im a stundent"
   end
 
   def show
@@ -32,7 +33,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update(task_params)
       flash[:updated] = "Task was successfully updated"
-      redirect_to task_path  ##removed s togoto show
+      redirect_to task_path(@task)  ##removed s togoto show
     else
       render :edit
     end
@@ -50,7 +51,7 @@ class TasksController < ApplicationController
 
 
   def task_params
-    params.require(:task).permit(:description)
+    params.require(:task).permit(:description, :complete)
   end
 
 end

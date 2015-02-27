@@ -1,34 +1,43 @@
 <div class="container">
-<div class="page-header">
+  <div class="page-header">
 
-<%= link_to "New Task", new_task_path, class: "btn btn-info pull-right" %>
-<h1>Tasks</h1>
-<hr>
+  <%= link_to "New Task", new_task_path, class: "btn btn-info pull-right" %>
+  <h1>Tasks</h1>
+  <hr>
 
-<table class="table">
+  <table class="table">
 
-  <thead>
-  <tr>
-    <th>Description</th>
-  </tr>
-  </thead>
+    <thead>
+      <tr>
+        <th>Description</th>
+      </tr>
+    </thead>
 
-  <% @tasks.each do |task| %>
+    <% @tasks.each do |task| %>
 
-  <tr>
-    <td>
-    <%= link_to task.description, task_path(task) %>
+    <tr>
+      <td>
 
-    <div class="pull-right">
-    <%= link_to "Edit", edit_task_path(task), class: "btn btn-info" %>
-    <%= link_to "Delete", task_path(task), method: "delete", class: "btn btn-danger" %>
-    </div>
+        <% if task.complete == true %>
+        <s><%= link_to task.description, task_path(task) %></s>
+        <% else %>
+        <%= link_to task.description, task_path(task) %>
+        <% end %>
 
-    </td>
-  </tr>
 
-  <% end %>
-</table>
+
+
+
+        <div class="pull-right">
+          <%= link_to "Edit", edit_task_path(task), class: "btn btn-info" %>
+          <%= link_to "Delete", task_path(task), method: "delete", class: "btn btn-danger" %>
+        </div>
+
+      </td>
+    </tr>
+
+    <% end %>
+  </table>
 
 </div>
 </div>
