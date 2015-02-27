@@ -14,9 +14,9 @@
     <li class="active"><%= @task.description %></li>
   </ol>
 
-  <% if @taskdate.date %>
+  <% if @taskdate.due_date %>
   <b>Due Date:</b>
-  <%= @taskdate.date.strftime("%m/%d/%Y") %>
+  <%= @taskdate.due_date.strftime("%m/%d/%Y") %>
   <% end %>
 
 
