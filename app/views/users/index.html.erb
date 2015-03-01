@@ -1,13 +1,46 @@
 <div class="container">
   <div class="page-header">
+
+    <%= link_to "New User", new_user_path, class: "btn btn-info pull-right" %>
     <h1>Users</h1>
     <hr>
 
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-md-5">User</th>
+          <th class="col-md-2">Email</th>
+          <th class="col-md-5"></th>
+        </tr>
+      </thead>
+
+      <% @users.each do |user| %>
+
+      <tr>
+
+      <td class="col-md-3">
+      <%= user.first_name %>
+      <%= user.last_name %>
+      </td>
+
+      <td class="col-md-4">
+      <%= user.email %>
+      </td>
+
+      <td class="col-md-5">
+      </td>
+
+
+    </tr>
+
+      <hr>
+      <% end %>
 
 
 
 
 
+</table>
 
+    </div>
   </div>
-</div>
