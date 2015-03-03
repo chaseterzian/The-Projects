@@ -16,18 +16,8 @@
 
 <div class="container">
 
-  <% if flash[:created].present? %>
-  <div class="alert alert-success text-center" role="alert"><%= flash[:created] %></div>
-  </hr>
-  <% end %>
-
-  <% if flash[:updated].present? %>
-  <div class="alert alert-success text-center" role="alert"><%= flash[:updated] %></div>
-  </hr>
-  <% end %>
-
-  <% if flash[:deleted].present? %>
-  <div class="alert alert-success text-center" role="alert"><%= flash[:deleted] %></div>
+  <% if flash[:message].present? %>
+  <div class="alert alert-success text-center" role="alert"><%= flash[:message] %></div>
   </hr>
   <% end %>
 </div>
