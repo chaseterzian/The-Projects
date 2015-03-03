@@ -18,15 +18,15 @@
 
       <tr>
         <td class="col-md-3">
-          <%= user.first_name %>
-          <%= user.last_name %>
+          <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %>
         </td>
 
-        <td class="col-md-4">
-          <%= user.email %>
+        <td class="col-md-8">
+          <%= link_to user.email, user_path(user) %>
         </td>
 
-        <td class="col-md-5">
+        <td class="col-md-1">
+          <%= link_to "Edit", edit_user_path(user) %>
         </td>
       </tr>
 
