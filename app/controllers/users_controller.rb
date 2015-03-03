@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:created] = "Task was successfully created"
       redirect_to users_path
     else
       render :new
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email)
   end
-  
+
 
 
 
