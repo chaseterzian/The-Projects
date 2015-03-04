@@ -1,1 +1,30 @@
-show
+<div class="container">
+  <div class="page-header">
+
+    <%= link_to "Edit", edit_user_path, class: "btn btn-info pull-right" %>
+    <h1> <%= @user.first_name + " " + @user.last_name %> </h1>
+    <hr>
+
+    <%= form_for @user, html: { class: "form-horizontal" } do |f| %>
+
+
+    <div class="dl-horizontal">
+      <dt>First Name</dt>
+      <dd><%= @user.first_name %></dd>
+    </div>
+
+    <div class="dl-horizontal">
+      <dt>Last Name</dt>
+      <dd><%= @user.last_name %></dd>
+    </div>
+
+    <div class="dl-horizontal">
+      <dt><%= "Email" %></dt>
+      <dd><%= mail_to @user.email %></dd>
+    </div>
+
+    <% end %>
+
+
+  </div>
+</div>
