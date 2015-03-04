@@ -3,6 +3,7 @@
 
     <%= link_to "New Project", new_project_path, class: "btn btn-info pull-right" %>
     <h1>Projects</h1>
+    <hr>
 
     <table class="table">
       <thead>
@@ -17,7 +18,7 @@
 
       <tr>
         <td class="col-md-3">
-          <%= link_to :project_description, project_path(project) %>
+          <%= link_to "#{project.project_name}", project_path(project) %>
         </td>
 
         <td class="col-md-8">
@@ -27,7 +28,8 @@
         </td>
       </tr>
 
-    </div>
-  </div>
+      <% end %>
 
-  <% end %>
+    </table>
+  </div>
+</div>
