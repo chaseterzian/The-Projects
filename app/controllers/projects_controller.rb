@@ -37,6 +37,13 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:id])
+    if @project.destroy
+      flash[:message] = "User was successfully deleted"
+      redirect_to projects_path
+    else
+      render :edit
+    end
   end
 
   private
