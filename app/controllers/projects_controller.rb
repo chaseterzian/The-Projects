@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:project_name)
+    params.require(:project).permit(:name)
   end
 
 
