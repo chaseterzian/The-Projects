@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
       flash[:message] = "Project was successfully updated"
       redirect_to project_path
     else
-      render :update
+      render :edit
     end
   end
 
