@@ -1,0 +1,23 @@
+<div class="form-group has-error">
+  <label class="control-label" for="inputError1">Input with error</label>
+  <input type="text" class="form-control" id="inputError1">
+</div>
+
+
+
+
+<%= form_for @project do |f| %>
+<% if @project.errors.any? %>
+<ul>
+  <% @project.errors.full_messages.each do |msg| %>
+  <div class="form-group has-error">
+    <label class="control-label" for="inputError1">
+
+      <li> <%= msg %> </li>
+    </label>
+  </div>
+  <% end %>
+</ul>
+<% end %>
+<% end %>
+_________________new.html.erb eorros
