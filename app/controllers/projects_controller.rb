@@ -30,7 +30,8 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update(project_params)
-      redirect_to projects_path
+      flash[:message] = "Project was successfully updated"
+      redirect_to project_path
     else
       render :update
     end
@@ -39,7 +40,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     if @project.destroy
-      flash[:message] = "User was successfully deleted"
+      flash[:message] = "Project was successfully deleted"
       redirect_to projects_path
     else
       render :edit
