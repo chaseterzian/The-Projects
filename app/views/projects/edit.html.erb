@@ -1,44 +1,7 @@
 <div class="container">
   <div class="page-header">
 
-    <h1>Edit Project</h1>
-    <hr>
-
-    <% if @project.errors.any? %>
-    <div class="row">
-      <div class="col-md-offset-2 col-md-7">
-        <div class="alert alert-danger">
-          <h3> <%= pluralize(@project.errors.count, "error") %> prohibited this form from being saved:</h3>
-
-          <ul>
-            <% @project.errors.full_messages.each do |msg| %>
-            <li>
-              <%= msg %>
-            </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <% end %>
-
-    <%= form_for @project, html: { class: "form-horizontal" } do |f| %>
-
-    <div class="form-group">
-      <%= f.label :name, class: "col-md-2 control-label" %>
-      <div class="col-md-6">
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-md-offset-2 col-md-3">
-        <%= f.submit "Update Project", class: "btn btn-primary" %>
-        <%= link_to "Cancel", projects_path, class: "btn btn-default" %>
-      </div>
-    </div>
-
-    <% end %>
+    <%= render "form", {header: "Edit Project", name_of_button: "Update Project"} %>
 
   </div>
 </div>
