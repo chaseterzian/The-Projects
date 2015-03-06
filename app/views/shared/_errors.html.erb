@@ -1,0 +1,16 @@
+<% if shared_errors.errors.any? %>
+<div class="row">
+  <div class="col-md-offset-2 col-md-7">
+    <div class="alert alert-danger">
+      <h3> <%= pluralize(shared_errors.errors.count, "error") %>
+        prohibited this form from being saved</h3>
+
+        <ul>
+          <% shared_errors.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% end %>

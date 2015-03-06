@@ -1,40 +1,22 @@
-
 <h1> <%= header %> </h1>
 <hr>
 
-<% if @project.errors.any? %>
-<div class="row">
-  <div class="col-md-offset-2 col-md-7">
-    <div class="alert alert-danger">
-      <h3> <%= pluralize(@project.errors.count, "error") %>
-        prohibited this form from being saved:</h3>
+<%= render partial: "shared/errors", locals:{shared_errors: @project} %>
 
-        <ul>
-          <% @project.errors.full_messages.each do |msg| %>
-          <li>
-            <%= msg %>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
+<%= form_for @project, html: { class: "form-horizontal" } do |f| %>
+
+<div class="form-group">
+  <%= f.label :name, "Name", class: "col-md-2 control-label" %>
+  <div class="col-md-6">
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <% end %>
+</div>
 
-  <%= form_for @project, html: { class: "form-horizontal" } do |f| %>
-
-  <div class="form-group">
-    <%= f.label :name, "Name", class: "col-md-2 control-label" %>
-    <div class="col-md-6">
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
+<div class="form-group">
+  <div class="col-md-offset-2 col-md-3">
+    <%= f.submit name_of_button, class: "btn btn-primary" %>
+    <%= link_to "Cancel", projects_path, class: "btn btn-default" %>
   </div>
+</div>
 
-  <div class="form-group">
-    <div class="col-md-offset-2 col-md-3">
-      <%= f.submit name_of_button, class: "btn btn-primary" %>
-      <%= link_to "Cancel", projects_path, class: "btn btn-default" %>
-    </div>
-  </div>
-
-  <% end %>
+<% end %>

@@ -1,6 +1,8 @@
 <h1> <%= header %> </h1>
 <hr>
 
+<%= render partial: "shared/errors", locals:{shared_errors: @task} %>
+
 <ol class="breadcrumb">
   <li><%= link_to "Tasks", tasks_path %></li>
   <li class="active"><%= "New Task" %></li>
