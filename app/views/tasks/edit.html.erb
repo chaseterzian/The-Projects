@@ -1,15 +1,7 @@
 <div class="container">
   <div class="page-header">
 
-    <h1>Editing Task</h1>
-    <hr>
-
-    <ol class="breadcrumb">
-      <li><%= link_to "Tasks", tasks_path %></li>
-      <li class="active"><%= "New Task" %></li>
-    </ol>
-
-    <%= render "form" %>
+    <%= render "form", {name_of_button: "Update task", header: "Edit Task"} %>
 
   </div>
 </div>

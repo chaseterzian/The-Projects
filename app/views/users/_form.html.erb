@@ -1,0 +1,44 @@
+<h1><%= header %></h1>
+<hr>
+
+<%= form_for @user, html: { class: "form-horizontal" } do |f| %>
+
+<div class="form-group">
+  <%= f.label :first_name, "First Name", class: "col-md-2 control-label" %>
+  <div class="col-md-4">
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :last_name, "Last Name", class: "col-md-2 control-label" %>
+  <div class="col-md-4">
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label "Email", class: "col-md-2 control-label" %>
+  <div class="col-md-4">
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-md-offset-2 col-md-3">
+    <%= f.submit name_of_button, class: "btn btn-primary" %>
+    <%= link_to "Cancel", users_path, class: "btn btn-default" %>
+  </div>
+</div>
+
+<% if @user_edit_for_partial %>
+<div class="form-group">
+  <div class="col-md-offset-2 col-md-4 text-center">
+    <div class="well">
+      <%= link_to "Delete", @user, method: "delete", class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% end %>

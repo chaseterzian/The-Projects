@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @user_edit_for_partial = User.find(params[:id])
   end
 
   def show
