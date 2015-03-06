@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       flash[:message] = "User was successfully updated"
       redirect_to users_path
     else
-      render :update
+      render :edit
     end
   end
 
