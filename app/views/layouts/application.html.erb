@@ -14,9 +14,9 @@
     </div>
   </nav>
 
-<div class="container">
-  <% if flash[:message].present? %>
-  <div class="alert alert-success text-center" role="alert"><%= flash[:message] %></div>
+  <div class="container">
+    <% if flash[:message].present? %>
+    <div class="alert alert-success text-center" role="alert"><%= flash[:message] %></div>
   </hr>
   <% end %>
 </div>
@@ -26,24 +26,24 @@
 
 
 <footer>
-<div class="container">
+  <div class="container">
 
-  <div class="row">
-    <div class="col-md-8">
-      <%= link_to "About", about_path %>
-      |
-      <%= link_to "Terms", terms_path %>
-      |
-      <%= link_to "FAQ", faq_path %>
-      |
-      <%= link_to "Tasks", tasks_path %>
-      |
-      <%= link_to "Users", users_path %>
-      |
-      <%= link_to "Projects", projects_path %>
-    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <%= link_to "About", about_path %>
+        |
+        <%= link_to "Terms", terms_path %>
+        |
+        <%= link_to "FAQ", faq_path %>
+        |
+        <%= link_to "Tasks", tasks_path %>
+        |
+        <%= link_to "Users", users_path %>
+        |
+        <%= link_to "Projects", projects_path %>
+      </div>
 
-    <div class="col-md-4 container-fluid">
+      <div class="col-md-4 container-fluid">
         <%= link_to(image_tag("gschoollink.png", class: "links-right"), "https://students.gschool.it/students/275") %>
         <%= link_to(image_tag("twitterlink.png", class: "links-right"), "http://twitter.com/chaseterzian") %>
         <%= link_to(image_tag("githublink.png", class: "links-right"),  "https://github.com/chaseterzian") %>
