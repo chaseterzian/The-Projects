@@ -1,4 +1,4 @@
-[!Build Status](https://travis-ci.org/chaseterzian/gcamp.png)  https://travis-ci.org/chaseterzian/gcamp
+[!Build Status(https://travis-ci.org/chaseterzian/gcamp.png)]https://travis-ci.org/chaseterzian/gcamp
 
 
 == README
