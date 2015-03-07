@@ -1,4 +1,4 @@
-https://travis-ci.org/profile/chaseterzian
+https://travis-ci.org/chaseterzian/gcamp.svg?branch=master
 
 == README
 
