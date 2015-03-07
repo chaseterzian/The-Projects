@@ -1,4 +1,5 @@
-<img src="https://travis-ci.org/chaseterzian/gcamp.svg" data-bindattr-790="790" title="Build Status Images">
+[![Build Status](https://travis-ci.org/chaseterzian/gcamp.png)](https://travis-ci.org/chaseterzian/gcamp)
+
 
 == README
 
