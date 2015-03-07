@@ -1,4 +1,4 @@
-https://travis-ci.org/chaseterzian/gcamp.svg?branch=master
+<img src="https://travis-ci.org/chaseterzian/gcamp.svg" data-bindattr-790="790" title="Build Status Images">
 
 == README
 
