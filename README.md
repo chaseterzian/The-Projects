@@ -1,5 +1,4 @@
-![](https://travis-ci.org/chaseterzian/gcamp.png)  
-https://travis-ci.org/chaseterzian/gcamp
+![](https://travis-ci.org/chaseterzian/gcamp.png)  https://travis-ci.org/chaseterzian/gcamp
 
 
 == README
