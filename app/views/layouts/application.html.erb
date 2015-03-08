@@ -8,9 +8,15 @@
 </head>
 
 <body>
+
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <%= link_to "gCamp", root_path, class: "navbar-brand" %>
+
+      <% if current_user %>
+      <% else %>
+      <%= link_to "Sign Up", signup_path, class: "navbar-brand pull-right" %>
+      <% end %>
     </div>
   </nav>
 
