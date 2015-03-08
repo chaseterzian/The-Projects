@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-![](https://travis-ci.org/chaseterzian/gcamp.png) https://travis-ci.org/chaseterzian/gcamp
-=======
 ![](https://travis-ci.org/chaseterzian/gcamp.png)  https://travis-ci.org/chaseterzian/gcamp
->>>>>>> 12a24a1536a82b5a10cca6617eb05f9fbe889fb3
 
 
 == README
