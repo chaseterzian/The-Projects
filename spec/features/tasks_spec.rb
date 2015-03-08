@@ -2,16 +2,16 @@ require 'rails_helper'
 
 feature 'User can CRUD tasks that include flash messages CUD' do
   scenario 'User can create a new task from the task index' do
-    # visit tasks_path
-    # expect(page).to have_content 'Tasks'
-    # expect(page).to have_content 'Description'
-    # expect(page).to have_content 'Due On'
-    # click_link 'New Task'
-    #
+    visit tasks_path
+    expect(page).to have_content 'Tasks'
+    expect(page).to have_content 'Description'
+    expect(page).to have_content 'Due On'
+    click_link 'New Task'
+    
     # expect(current_path).to eq new_task_path
     # expect(page).to have_content 'New Task'
     # expect(page).to have_content 'Description'
-    visit tasks_path
+    # visit tasks_path
     # fill_in :task_description, with: 'test'
     # fill_in :task_due_date, with: 1012015
     # expect(find_link('New Task')[:href]).to eq(new_task_path)
