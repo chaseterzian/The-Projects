@@ -18,6 +18,7 @@
       <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user), class: "navbar-brand pull-right" %>
       <% else %>
       <%= link_to "Sign Up", signup_path, class: "navbar-brand pull-right" %>
+      <%= link_to "Sign In", signin_path, class: "navbar-brand pull-right" %>
       <% end %>
     </div>
   </nav>

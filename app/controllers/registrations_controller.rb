@@ -15,12 +15,7 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  def destroy
-    session.clear
-    flash[:message] = "You have successfully signed out"
-    redirect_to root_path
-  end
-
+  
 
 
 end
