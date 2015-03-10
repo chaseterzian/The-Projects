@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/faq' => 'common_questions#common_questions'
     get '/sign-up' => 'registrations#new', as: :signup
     post '/sign-up' => 'registrations#create'
+    
 
     #get "/tasks" => "tasks#tasks"
 
