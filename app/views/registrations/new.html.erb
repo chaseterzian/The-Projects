@@ -9,18 +9,19 @@
 
           <%= form_for @user, url: sign_up_path do |f| %>
 
-          <h3>Sign up for gCamp!</h3>
+          <h3><strong>Sign up for gCamp!</strong></h3>
           <hr>
 
           <% if @user.errors.present? %>
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-            <li>
-              <%= message %>
-            </li>
-            <% end %>
-          </ul>
+          <% @user.errors.full_messages.each do |message| %>
+          <div class="text-danger">
+            <h5><strong><%= message %></strong></h5>
+          </div>
           <% end %>
+          <% end %>
+
+
+
 
           <div class="form-group">
             <div>
