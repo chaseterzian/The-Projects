@@ -6,11 +6,21 @@
       <div class="col-md-offset-3 col-md-6">
         <div class="well">
 
+
           <%= form_for @user, url: sign_up_path do |f| %>
 
           <h3>Sign up for gCamp!</h3>
           <hr>
 
+          <% if @user.errors.present? %>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+            <li>
+              <%= message %>
+            </li>
+            <% end %>
+          </ul>
+          <% end %>
 
           <div class="form-group">
             <div>
