@@ -5,9 +5,11 @@ Rails.application.routes.draw do
     get '/terms' => 'terms#terms'
     get '/about' => 'about#about'
     get '/faq' => 'common_questions#common_questions'
+
     get '/sign-up' => 'registrations#new', as: :signup
     post '/sign-up' => 'registrations#create'
-    
+    get '/sign-out' => 'registrations#destroy', as: :signout
+
 
     #get "/tasks" => "tasks#tasks"
 
