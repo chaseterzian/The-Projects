@@ -17,12 +17,12 @@
 
 # expect(current_path).to eq new_task_path
 # expect(page).to have_content 'New Task'
-# expect(page).to have_content 'Description'
+### expect(page).to_not have_content 'Description'
 # visit tasks_path
 # fill_in :task_description, with: 'test'
 # fill_in :task_due_date, with: 1012015
 # expect(find_link('New Task')[:href]).to eq(new_task_path)
-# expect(find_link('Edit')[:href]).to eq(edit_task_path)
+# expect(not find_link('Edit')[:href]).to eq(edit_task_path)
 # click_button 'Create task'
 #
 # visit tasks_path
