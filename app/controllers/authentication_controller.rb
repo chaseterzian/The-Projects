@@ -11,7 +11,7 @@ class AuthenticationController < ApplicationController
       flash[:message] = "You have successfully signed in"
       redirect_to root_path
     else
-      @error_message = "Invalid Email/Password"
+      @error_message = "Email / Password combination is invalid"
       render :new
     end
   end
