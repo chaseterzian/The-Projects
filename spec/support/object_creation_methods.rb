@@ -28,6 +28,10 @@ def exgcamp
   expect(page).to have_link("gCamp", visible: false)
 end
 
+def exuser
+  expect(page).to have_link("Chase Terzian", visible: false)
+end
+
 def expath
   expect(current_path).to eq
 end
