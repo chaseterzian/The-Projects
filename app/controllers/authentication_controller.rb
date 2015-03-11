@@ -16,7 +16,14 @@ class AuthenticationController < ApplicationController
 
   def destroy
     session.clear
-    flash[:message] = "You have successfully signed out"
+    flash[:message] = "You have successfully logged out"
     redirect_to root_path
   end
 end
+
+
+def ec
+  expect(page).to have_content
+end
+
+ec "fhtgfnhg"
