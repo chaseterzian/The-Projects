@@ -7,6 +7,7 @@ class AuthenticationController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      flash[:message] = "You have successfully signed in"
       redirect_to root_path
     else
       @error_message = "Invalid Email/Password"
@@ -20,10 +21,3 @@ class AuthenticationController < ApplicationController
     redirect_to root_path
   end
 end
-
-
-def ec
-  expect(page).to have_content
-end
-
-ec "fhtgfnhg"
