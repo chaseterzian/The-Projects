@@ -21,12 +21,19 @@
       <% end %>
     </div>
   </nav>
-  
-  <div class="container">
-    <% if flash[:message].present? %>
-    <div class="alert alert-success text-center" role="alert"><%= flash[:message] %></div>
-  </hr>
-  <% end %>
+
+<div class="container">
+  <% if flash[:message].present? %>
+  <div class="alert alert-success text-center" role="alert"><%= flash[:message] %></div>
+</hr>
+<% end %>
+</div>
+
+<div class="container">
+  <% if flash[:warning].present? %>
+  <div class="alert alert-danger text-center" role="alert"><%= flash[:warning] %></div>
+</hr>
+<% end %>
 </div>
 
 
@@ -43,12 +50,15 @@
         <%= link_to "Terms", terms_path %>
         |
         <%= link_to "FAQ", faq_path %>
+        <% if current_user.present? %>
         |
         <%= link_to "Tasks", tasks_path %>
         |
         <%= link_to "Users", users_path %>
         |
         <%= link_to "Projects", projects_path %>
+        <% else %>
+        <% end%>
       </div>
 
       <div class="col-md-4 container-fluid">
