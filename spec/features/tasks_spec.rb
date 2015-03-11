@@ -1,13 +1,26 @@
 require 'rails_helper'
 
-feature 'User can CRUD tasks that include flash messages CUD' do
-  scenario 'User can create a new task from the task index' do
-    visit tasks_path
-    expect(page).to have_content 'Tasks'
-    expect(page).to have_content 'Description'
-    expect(page).to have_content 'Due On'
-    click_link 'New Task'
-    
+feature 'sign in' do
+  scenario 'test for test with login' do
+
+    visit signin_path
+    fill_in 'Email', with: 'chaseterzian@gmail.com'
+    fill_in 'Password', with: 'p1'
+    #within("form") do
+    click_button 'Sign In'
+
+
+  end
+end
+
+# feature 'User can CRUD tasks that include flash messages CUD' do
+#   scenario 'User can create a new task from the task index' do
+#     visit tasks_path
+#     expect(page).to have_content 'Tasks'
+#     expect(page).to have_content 'Description'
+#     expect(page).to have_content 'Due On'
+#     click_link 'New Task'
+
     # expect(current_path).to eq new_task_path
     # expect(page).to have_content 'New Task'
     # expect(page).to have_content 'Description'
@@ -30,5 +43,5 @@ feature 'User can CRUD tasks that include flash messages CUD' do
     # taskn1.save!
     # taskn2 = Task.new(description: 'Cap-spec test 2', due_date: 1012015)
     # taskn2.save!
-end
-end
+# end
+# end
