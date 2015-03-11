@@ -1,17 +1,41 @@
 require 'rails_helper'
 
-feature 'sign in' do
-  scenario 'test for test with login' do
 
-    visit signin_path
-    fill_in 'Email', with: 'chaseterzian@gmail.com'
-    fill_in 'Password', with: 'p1'
-    #within("form") do
-    click_button 'Sign In'
+feature 'User can sign in' do
+  scenario 'test signing in' do
 
+    @create_user
+
+    visit root_path
+    within('.navbar') {click_link('Sign In')}
+    @expath = '/sign-in'
+
+    @exsignin
+    @exsignout
+    @exgcamp
+    @excontent = 'Email'
+    @excontent = 'Password'
+    @excontent = 'Sign In'
+
+    fill_in "Email", with: 'chaseterzian@gmail.com'
+    fill_in "Password", with: 'p1'
+    @cb = 'Sign In'
+
+    @expath = root_path
 
   end
 end
+
+
+
+    # expect(page).to have_link("Sign In", visible: false)
+
+  # scenario 'test' do
+  #       expect(page).to have_content 'Sign Out'
+  # end
+
+
+
 
 # feature 'User can CRUD tasks that include flash messages CUD' do
 #   scenario 'User can create a new task from the task index' do
