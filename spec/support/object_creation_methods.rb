@@ -1,29 +1,33 @@
 def create_user
-  user = User.create(
+  user = User.create!(
   first_name: 'Chase',
-  last_name: 'Terzian',
-  email: 'chase@gmail.com',
+  last_name: 'Gnar',
+  email: 'chasegnar@gmail.com',
   password: 'pp',
   password_confirmation: 'pp')
 end
 
-
 def login
-  fill_in 'Email', with: 'Tron@gmail.com'
+  fill_in 'Email', with: 'chasegnar@gmail.com'
   fill_in 'Password', with: 'pp'
 end
 
 def signup
-  fill_in 'First Name', with: 'Chase'
-  fill_in 'Last Name', with: 'Terzian'
-  fill_in 'Email', with: 'chase@gmail.com'
-  fill_in 'Password', with: 'pp'
-  fill_in 'Password Confirmation', with: 'pp'
+  fill_in 'First Name', with: 'Michael'
+  fill_in 'Last Name', with: 'Sprinklewood'
+  fill_in 'Email', with: 'Michael@gmail.com'
+  fill_in 'Password', with: 'ppp'
+  fill_in 'Password Confirmation', with: 'ppp'
 end
 
 def saveopen
   save_and_open_page
 end
+
+
+
+
+
 
 
 # def create_user2

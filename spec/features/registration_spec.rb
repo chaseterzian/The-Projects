@@ -4,9 +4,6 @@ require 'rails_helper'
 feature 'User can create an account' do
   scenario 'User can not see tasks, users, or projects until account created - flash present ' do
 
-
-    create_user
-
     visit root_path
     expect(page).to have_link 'gCamp'
     expect(page).to have_link 'Sign In'
@@ -39,12 +36,12 @@ feature 'User can create an account' do
 
     signup
     click_button 'Sign Up'
-
+saveopen
     expect(current_path).to eq root_path
     expect(page).to have_content 'You have successfully signed up'
 
     expect(page).to have_link 'gCamp'
-    expect(page).to have_link 'Chase Terzian'
+    expect(page).to have_link 'Michael Sprinklewood'
     expect(page).to have_link 'Sign Out'
     expect(page).to have_link 'Tasks'
     expect(page).to have_link 'Users'

@@ -38,7 +38,7 @@ feature 'Existing user sign-in' do
     expect(page).to have_content 'You have successfully signed in'
 
     expect(page).to have_link 'gCamp'
-    expect(page).to have_link 'Chase Terzian'
+    expect(page).to have_link 'Chase Gnar'
     expect(page).to have_link 'Sign Out'
     expect(page).to have_link 'Tasks'
     expect(page).to have_link 'Users'
