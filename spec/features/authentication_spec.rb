@@ -20,13 +20,13 @@ feature 'Existing user sign-in' do
     expect(page).to have_content 'Email'
     expect(page).to have_content 'Password'
     expect(page).to have_link 'Sign In'
+
     expect(page).to have_link 'About'
     expect(page).to have_link 'Terms'
     expect(page).to have_link 'FAQ'
-
-    expect(page).to_not have_content 'Tasks'
-    expect(page).to_not have_content 'Users'
-    expect(page).to_not have_content 'Projects'
+    expect(page).to_not have_link 'Tasks'
+    expect(page).to_not have_link 'Users'
+    expect(page).to_not have_link 'Projects'
 
     click_button 'Sign In'
     expect(page).to have_content 'Email / Password combination is invalid'
@@ -40,6 +40,10 @@ feature 'Existing user sign-in' do
     expect(page).to have_link 'gCamp'
     expect(page).to have_link 'Chase Gnar'
     expect(page).to have_link 'Sign Out'
+
+    expect(page).to have_link 'About'
+    expect(page).to have_link 'Terms'
+    expect(page).to have_link 'FAQ'
     expect(page).to have_link 'Tasks'
     expect(page).to have_link 'Users'
     expect(page).to have_link 'Projects'
