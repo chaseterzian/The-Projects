@@ -42,6 +42,8 @@ feature 'User can create an account' do
     expect(page).to have_link 'gCamp'
     expect(page).to have_link 'Michael Sprinklewood'
     expect(page).to have_link 'Sign Out'
+    expect(page).to_not have_link 'Sign Up'
+    expect(page).to_not have_link 'Sign In'
 
     expect(page).to have_link 'About'
     expect(page).to have_link 'Terms'
@@ -50,8 +52,6 @@ feature 'User can create an account' do
     expect(page).to have_link 'Users'
     expect(page).to have_link 'Projects'
 
-    expect(page).to_not have_link 'Sign Up'
-    expect(page).to_not have_link 'Sign In'
 
   end
 end
