@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 
-feature 'Once signed in, user can see, edit, make, and destroy tasks' do
-  scenario 'Test Task-Index page content and links'  do
+feature 'Once signed in, user can see, edit, make, and destroy tasks with proper redirects and errors' do
+  scenario 'Test Task-Index page content links and redirects'  do
 
     create_user
     visit signin_path
@@ -41,7 +41,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks' do
 
   end
 
-  scenario 'Test New-Task page for content links and validations'  do
+  scenario 'Test New-Task page for content links validations, and redirects'  do
 
     create_user
     visit signin_path
@@ -105,7 +105,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks' do
 
   end
 
-  scenario 'Test Show-Task page for content, links, and validations' do
+  scenario 'Test Show-Task page for content, links, validations, and redirects' do
 
     create_user
     visit signin_path
@@ -150,7 +150,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks' do
 
   end
 
-  scenario 'Test Edit-Task page for content and links' do
+  scenario 'Test Edit-Task page for content, links, and redirects' do
 
     create_user
     visit signin_path
@@ -198,24 +198,73 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks' do
     # checkbox
     # end
 
-    fill_in 'Description', with: 'Test Description Edited'
-    fill_in 'Due Date', with: '02/02/2014'
-
     expect(page).to have_button 'Update task'
     expect(find_link('Cancel')[:href]).to eq(tasks_path)
 
     click_button 'Update task'
     expect(current_path).to eq task_path(Task.last)
-
-    epthc 
-
-
-
-
-
-
-
+    expect(page).to have_content 'Task was successfully updated'
 
   end
 
+  scenario 'After updating task, user is redirected to Show-Page' do
+
+    create_user
+    visit signin_path
+    login
+    click_button 'Sign In'
+    click_link 'Tasks'
+    click_link 'New Task'
+    fill_in 'Description', with: 'Test Description'
+    fill_in 'Due Date', with: '01/01/2015'
+    click_button 'Create task'
+    click_link 'Edit'
+    fill_in 'Description', with: 'Test Description Edited'
+    fill_in 'Due Date', with: '02/02/2014'
+    click_button 'Update task'
+    expect(current_path).to eq task_path(Task.last)
+
+
+    expect(page).to have_content 'Task was successfully updated'
+    expect(page).to have_content 'Test Description Edited'
+    expect(page).to have_content 'Due Date:'
+    expect(page).to have_content '2/02/2014'
+    expect(page).to have_link 'Edit'
+
+    within('ol.breadcrumb') do
+      expect(page).to have_content 'Tasks'
+      expect(page).to have_content 'Test Description Edited'
+      click_link 'Tasks'
+    end
+
+    expect(current_path).to eq tasks_path
+
+  end
+
+  scenario 'User can go back to Task-Index and can now see created and updated task' do
+
+    create_user
+    visit signin_path
+    login
+    click_button 'Sign In'
+    click_link 'Tasks'
+    click_link 'New Task'
+    fill_in 'Description', with: 'Test Description'
+    fill_in 'Due Date', with: '01/01/2015'
+    click_button 'Create task'
+    click_link 'Edit'
+    fill_in 'Description', with: 'Test Description Edited'
+    fill_in 'Due Date', with: '02/02/2014'
+    click_button 'Update task'
+    within('ol.breadcrumb') do
+      click_link 'Tasks'
+    end
+
+
+    expect(page).to have_link 'Test Description Edited'
+    expect(page).to have_content '2/02/2014'
+    expect(page).to have_link 'Edit'
+    expect(page).to have_link 'Delete'
+
+  end
 end
