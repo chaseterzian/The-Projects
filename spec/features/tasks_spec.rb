@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 feature 'Once signed in, user can see, edit, make, and destroy tasks with proper redirects and errors' do
-  scenario 'Test Task-Index page content links and redirects'  do
+  scenario 'Test Task-Index page content links, redirects and functionality'  do
 
     create_user
     visit signin_path
@@ -35,13 +35,12 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     expect(page).to have_content 'Description'
     expect(page).to have_content 'Due On'
 
-    expect(find_link('New Task')[:href]).to eq(new_task_path)
     click_link 'New Task'
     expect(current_path).to eq new_task_path
 
   end
 
-  scenario 'Test New-Task page for content links validations, and redirects'  do
+  scenario 'Test New-Task page for content, links, flash message, redirects and functionality'  do #user able to...
 
     create_user
     visit signin_path
@@ -49,6 +48,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     click_button 'Sign In'
     click_link 'Tasks'
     click_link 'New Task'
+    visit new_task_path
     expect(current_path).to eq new_task_path
 
     expect(page).to have_link 'gCamp'
@@ -105,7 +105,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
 
   end
 
-  scenario 'Test Show-Task page for content, links, validations, and redirects' do
+  scenario 'Test Show-Task page for content, links, validations, redirects and functionality' do
 
     create_user
     visit signin_path
@@ -150,7 +150,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
 
   end
 
-  scenario 'Test Edit-Task page for content, links, and redirects' do
+  scenario 'Test Edit-Task page for content, links, flash messgae, redirects and functionality' do
 
     create_user
     visit signin_path
@@ -196,6 +196,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     #   expect(page).to have_content 'Test Description'
     #   expect(page).to have_content '01/01/2015'
     # checkbox
+    # validation
     # end
 
     expect(page).to have_button 'Update task'
@@ -207,7 +208,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
 
   end
 
-  scenario 'After updating task, user is redirected to Show-Page' do
+  scenario 'After updating task, user is redirected to Show-Page with flash message' do
 
     create_user
     visit signin_path
