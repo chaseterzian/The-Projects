@@ -21,12 +21,14 @@ feature 'Existing user sign-in' do
     expect(page).to have_content 'Password'
     expect(page).to have_link 'Sign In'
 
-    expect(page).to have_link 'About'
-    expect(page).to have_link 'Terms'
-    expect(page).to have_link 'FAQ'
-    expect(page).to_not have_link 'Tasks'
-    expect(page).to_not have_link 'Users'
-    expect(page).to_not have_link 'Projects'
+    within("footer") do
+      expect(page).to have_link 'About'
+      expect(page).to have_link 'Terms'
+      expect(page).to have_link 'FAQ'
+      expect(page).to_not have_link 'Tasks'
+      expect(page).to_not have_link 'Users'
+      expect(page).to_not have_link 'Projects'
+    end
 
     click_button 'Sign In'
     expect(page).to have_content 'Email / Password combination is invalid'
@@ -43,13 +45,14 @@ feature 'Existing user sign-in' do
     expect(page).to_not have_link 'Sign Up'
     expect(page).to_not have_link 'Sign In'
 
-    expect(page).to have_link 'About'
-    expect(page).to have_link 'Terms'
-    expect(page).to have_link 'FAQ'
-    expect(page).to have_link 'Tasks'
-    expect(page).to have_link 'Users'
-    expect(page).to have_link 'Projects'
-
-
+    within("footer") do
+      expect(page).to have_link 'About'
+      expect(page).to have_link 'Terms'
+      expect(page).to have_link 'FAQ'
+      expect(page).to have_link 'Tasks'
+      expect(page).to have_link 'Users'
+      expect(page).to have_link 'Projects'
+    end
+    
   end
 end

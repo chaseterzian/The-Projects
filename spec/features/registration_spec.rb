@@ -4,6 +4,7 @@ require 'rails_helper'
 feature 'User can create an account' do
   scenario 'User can not see tasks, users, or projects until account created - flash present ' do
 
+
     visit root_path
     expect(page).to have_link 'gCamp'
     expect(page).to have_link 'Sign In'
@@ -21,12 +22,14 @@ feature 'User can create an account' do
     expect(page).to have_content 'Password Confirmation'
     expect(page).to have_link 'Sign In'
 
-    expect(page).to have_link 'About'
-    expect(page).to have_link 'Terms'
-    expect(page).to have_link 'FAQ'
-    expect(page).to_not have_link 'Tasks'
-    expect(page).to_not have_link 'Users'
-    expect(page).to_not have_link 'Projects'
+    within("footer") do
+      expect(page).to have_link 'About'
+      expect(page).to have_link 'Terms'
+      expect(page).to have_link 'FAQ'
+      expect(page).to_not have_link 'Tasks'
+      expect(page).to_not have_link 'Users'
+      expect(page).to_not have_link 'Projects'
+    end
 
     click_button 'Sign Up'
     expect(page).to have_content "First name can't be blank"
@@ -36,6 +39,7 @@ feature 'User can create an account' do
 
     signup
     click_button 'Sign Up'
+
     expect(current_path).to eq root_path
     expect(page).to have_content 'You have successfully signed up'
 
@@ -45,13 +49,14 @@ feature 'User can create an account' do
     expect(page).to_not have_link 'Sign Up'
     expect(page).to_not have_link 'Sign In'
 
-    expect(page).to have_link 'About'
-    expect(page).to have_link 'Terms'
-    expect(page).to have_link 'FAQ'
-    expect(page).to have_link 'Tasks'
-    expect(page).to have_link 'Users'
-    expect(page).to have_link 'Projects'
-
-
+    within("footer") do
+      expect(page).to have_link 'About'
+      expect(page).to have_link 'Terms'
+      expect(page).to have_link 'FAQ'
+      expect(page).to have_link 'Tasks'
+      expect(page).to have_link 'Users'
+      expect(page).to have_link 'Projects'
+    end
+    
   end
 end
