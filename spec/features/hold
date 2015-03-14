@@ -1,0 +1,32 @@
+fill_in 'Last Name', with: 'Terzian'
+fill_in 'Password', with: 'pp'
+fill_in 'Email', with: 'chaset@gmail.com'
+fill_in 'Password Confirmation', with: 'pp'
+
+click_button 'Update User'
+expect(current_path).to eq (users_path)
+
+expect(page).to have_content 'User was successfully updated'
+expect(page).to have_content 'Chase Terzian'
+expect(page).to have_content 'chaset@gmail.com'
+
+end
+
+scenario 'User name in navbar links to the User-Show page' do
+
+  create_user
+  visit signin_path
+  login
+  click_button 'Sign In'
+  click_link 'Users'
+  expect(current_path).to eq (users_path)
+
+  within ('.navbar') do
+    click_link 'Chase Gnar'
+  end
+
+  expect(current_path).to eq (user_path(User.first))
+
+end
+
+end

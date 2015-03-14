@@ -191,6 +191,20 @@ feature 'User can Create, Read, Update and Delete Users with flash messages' do
     click_link 'Edit'
     expect(current_path).to eq (edit_user_path(User.first))
 
+    fill_in 'First Name', with: ''
+    fill_in 'Last Name', with: ''
+    fill_in 'Email', with: ''
+
+    click_button 'Update User'
+
+    within('div.alert.alert-danger') do
+      expect(page).to have_content '3 errors prohibited this form from being saved'
+      expect(page).to have_content "First name can't be blank"
+      expect(page).to have_content "Last name can't be blank"
+      expect(page).to have_content "Email can't be blank"
+    end
+
+    fill_in 'First Name', with: 'Chase'
     fill_in 'Last Name', with: 'Terzian'
     fill_in 'Password', with: 'pp'
     fill_in 'Email', with: 'chaset@gmail.com'
@@ -205,21 +219,21 @@ feature 'User can Create, Read, Update and Delete Users with flash messages' do
 
   end
 
-    scenario 'User name in navbar links to the User-Show page' do
+  scenario 'User name in navbar links to the User-Show page' do
 
-      create_user
-      visit signin_path
-      login
-      click_button 'Sign In'
-      click_link 'Users'
-      expect(current_path).to eq (users_path)
+    create_user
+    visit signin_path
+    login
+    click_button 'Sign In'
+    click_link 'Users'
+    expect(current_path).to eq (users_path)
 
-      within ('.navbar') do
-        click_link 'Chase Gnar'
-      end
-
-      expect(current_path).to eq (user_path(User.first))
-
+    within ('.navbar') do
+      click_link 'Chase Gnar'
     end
+
+    expect(current_path).to eq (user_path(User.first))
+
+  end
 
 end
