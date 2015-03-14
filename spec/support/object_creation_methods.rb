@@ -24,6 +24,15 @@ def saveopen
   save_and_open_page
 end
 
+def enter_new_test_person_information
+  fill_in 'First Name', with: 'Test'
+  fill_in 'Last Name', with: 'Person'
+  fill_in 'Email', with: 'testperson@gmail.com'
+  fill_in 'Password', with: 'pp'
+  fill_in 'Password Confirmation', with: 'pp'
+  click_button 'Create User'
+end
+
 
 
 # def test

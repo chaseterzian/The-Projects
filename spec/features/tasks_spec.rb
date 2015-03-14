@@ -80,7 +80,6 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     expect(page).to have_content 'Due Date'
 
     expect(page).to have_button 'Create task'
-    expect(page).to have_link 'Cancel'
     expect(find_link('Cancel')[:href]).to eq(tasks_path)
 
     click_button 'Create task'
@@ -123,9 +122,6 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     expect(page).to have_link 'Sign Out'
     expect(page).to_not have_link 'Sign In'
     expect(page).to_not have_link 'Sign Up'
-    expect(page).to have_link 'gCamp'
-    expect(page).to have_link 'Chase Gnar'
-    expect(page).to have_link 'Sign Out'
 
     within('footer') do
       expect(page).to have_link 'About'
@@ -144,7 +140,6 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     expect(page).to have_content 'Due Date:'
     expect(page).to have_content '1/01/2015'
 
-    expect(page).to have_link 'Edit'
     click_link 'Edit'
     expect(current_path).to eq edit_task_path(Task.last)
 
@@ -169,9 +164,6 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     expect(page).to have_link 'Sign Out'
     expect(page).to_not have_link 'Sign In'
     expect(page).to_not have_link 'Sign Up'
-    expect(page).to have_link 'gCamp'
-    expect(page).to have_link 'Chase Gnar'
-    expect(page).to have_link 'Sign Out'
 
     within('footer') do
       expect(page).to have_link 'About'
@@ -191,18 +183,11 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     expect(page).to have_content 'Description'
     expect(page).to have_content 'Due Date'
     expect(page).to have_content 'Complete'
+    check 'Complete'
 
-    # within('label') do                          #multiple instances
-    #   expect(page).to have_content 'Test Description'
-    #   expect(page).to have_content '01/01/2015'
-    # checkbox
-    # validation
-    # end
-
-    expect(page).to have_button 'Update task'
     expect(find_link('Cancel')[:href]).to eq(tasks_path)
-
     click_button 'Update task'
+
     expect(current_path).to eq task_path(Task.last)
     expect(page).to have_content 'Task was successfully updated'
 
@@ -225,8 +210,6 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     click_button 'Update task'
     expect(current_path).to eq task_path(Task.last)
 
-
-    expect(page).to have_content 'Task was successfully updated'
     expect(page).to have_content 'Test Description Edited'
     expect(page).to have_content 'Due Date:'
     expect(page).to have_content '2/02/2014'
