@@ -33,7 +33,7 @@ feature 'User can Create, Read, Update and Delete Users with flash messages' do
     within('table.table') do
       expect(find_link('Chase Gnar')[:href]).to eq(user_path(User.last))
       expect(find_link('chasegnar@gmail.com')[:href]).to eq('mailto:chasegnar@gmail.com')
-      expect(page).to have_content 'Edit'
+      expect(find_link('Edit')[:href]).to eq(edit_user_path(User.last))
     end
 
     click_link "New User"
@@ -98,7 +98,7 @@ feature 'User can Create, Read, Update and Delete Users with flash messages' do
 
   end
 
-  scenario 'Test Show_page content, links, flash message, redirects and functionality' do
+  scenario 'Test Show-Page content, links, flash message, redirects and functionality' do
 
     create_user
     visit signin_path
@@ -109,17 +109,76 @@ feature 'User can Create, Read, Update and Delete Users with flash messages' do
     enter_new_test_person_information
     expect(current_path).to eq (users_path)
 
+    expect(page).to have_link 'gCamp'
+    expect(page).to have_link 'Chase Gnar'
+    expect(page).to have_link 'Sign Out'
+    expect(page).to_not have_link 'Sign In'
+    expect(page).to_not have_link 'Sign Up'
+
+    within("footer") do
+      expect(page).to have_link 'About'
+      expect(page).to have_link 'Terms'
+      expect(page).to have_link 'FAQ'
+      expect(page).to have_link 'Tasks'
+      expect(page).to have_link 'Users'
+      expect(page).to have_link 'Projects'
+    end
+
+
     expect(page).to have_link 'Edit'
     expect(page).to have_link 'testperson@gmail.com'
     click_link 'Test Person'
     expect(current_path).to eq (user_path(User.last))
 
+    expect(page).to have_content 'Test Person'
+    expect(page).to have_content 'First Name'
+    expect(page).to have_content 'Test'
+    expect(page).to have_content 'Last Name'
+    expect(page).to have_content 'Person'
+    expect(page).to have_content 'Email'
+    expect(find_link('testperson@gmail.com')[:href]).to eq('mailto:testperson@gmail.com')
 
-
+    click_link 'Edit'
+    expect(current_path).to eq (edit_user_path(User.last))
 
   end
 
+  scenario 'Test Edit-Page content, links, flash message, redirects and functionality - redirect from user name on Index-Page' do
+
+    create_user
+    visit signin_path
+    login
+    click_button 'Sign In'
+    click_link 'Users'
+    click_link 'New User'
+    enter_new_test_person_information
+    expect(current_path).to eq (users_path)
+    click_link 'Test Person'
+    click_link 'Edit'
+    expect(current_path).to eq (edit_user_path(User.last))
+
+    expect(page).to have_link 'gCamp'
+    expect(page).to have_link 'Chase Gnar'
+    expect(page).to have_link 'Sign Out'
+    expect(page).to_not have_link 'Sign In'
+    expect(page).to_not have_link 'Sign Up'
+
+    within("footer") do
+      expect(page).to have_link 'About'
+      expect(page).to have_link 'Terms'
+      expect(page).to have_link 'FAQ'
+      expect(page).to have_link 'Tasks'
+      expect(page).to have_link 'Users'
+      expect(page).to have_link 'Projects'
+    end
 
 
+
+
+    #
+    #
+    # expect(page).to have_content 'Edit User'
+
+  end
 
 end
