@@ -8,7 +8,7 @@ require 'rails_helper'
       expect(task).to be_valid
     end
 
-    it 'Confirms the presence of a validation message when no description is entered' do
+    it 'Confirms the presence of validation - user must enter a description' do
 
       task = Task.new(description: '')
       task.valid?

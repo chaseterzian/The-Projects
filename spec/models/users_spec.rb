@@ -10,6 +10,8 @@ describe Task do
       password_confirmation: 'pp')
     expect(user).to be_valid
   end
+
+  it 'Confirms the presence of validations - must enter a first name, last name, and email'
 end
 
 
