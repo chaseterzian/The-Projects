@@ -33,6 +33,12 @@ def enter_new_test_person_information
   click_button 'Create User'
 end
 
+def create_task
+  project = Project.create!(
+  name: 'Test Project')
+end
+
+
 
 
 # def test

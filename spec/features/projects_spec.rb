@@ -30,6 +30,7 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
     expect(page).to have_content 'Projects'
     expect(page).to have_content 'Name'
     click_link 'New Project'
+    expect(current_path).to eq (new_project_path)
 
   end
 
@@ -102,13 +103,30 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
     end
 
 
-    # expect(page).to have_content 'Project was successfully created'
-    # expect(page).to have_content 'Test Project'
-    # expect(find_link('Delete')[:href]).to eq(projects_pats)
-    # click_button 'Edit'
-    # expect(current_path).to eq (edit_project_path(Project.last))
+    expect(page).to have_content 'Project was successfully created'
+    expect(page).to have_content 'Test Project'
+    expect(page).to have_link 'Delete'
+    # expect(find_link('Delete')[:href]).to eq(projects_path(Project.last))
+    click_link 'Edit'
+
+    expect(current_path).to eq (edit_project_path(Project.last))
 
   end
 
+  scenario 'Test Edit-Page content, links, flash message, redirects and functionality' do
+
+    create_user
+    visit signin_path
+    login
+    click_button 'Sign In'
+    click_link 'Projects'
+    click_link 'New Project'
+    fill_in 'Name', with: 'Test Project'
+    click_button 'Create Project'
+    click_link 'Edit'
+    expect(current_path).to eq (edit_project_path(Project.last))
+
 
   end
+
+end
