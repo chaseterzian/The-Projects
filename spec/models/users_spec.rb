@@ -11,26 +11,18 @@ describe Task do
     expect(user).to be_valid
   end
 
-  it 'Confirms the presence of validations - must enter a first name, last name, and email'
+  it 'Confirms the presence of validations - must enter a first name, last name, and email' do
+
+    user = User.new(
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+      password_confirmation: '')
+    user.valid?
+    expect(user.errors[:first_name]).to include("can't be blank")
+    expect(user.errors[:last_name]).to include("can't be blank")
+    expect(user.errors[:email]).to include("can't be blank")
+  end
+
 end
-
-
-
-
-
-# describe Task do
-#
-#   it 'Confirms the presence of a description for a new task' do
-#
-#     task = Task.new(description: 'Description Validation')
-#     expect(task).to be_valid
-#   end
-#
-#   it 'Confirms the presence of a validation message when no description is entered' do
-#
-#     task = Task.new(description: '')
-#     task.valid?
-#     expect(task.errors[:description]).to include("can't be blank")
-#   end
-
-  #how to test the edit page, where to specify path?

@@ -15,6 +15,4 @@ require 'rails_helper'
       expect(task.errors[:description]).to include("can't be blank")
     end
 
-    #how to test the edit page, where to specify path?
-
   end
