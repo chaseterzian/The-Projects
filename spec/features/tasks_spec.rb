@@ -104,7 +104,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
 
   end
 
-  scenario 'Test Show-Task page for content, links, validations, redirects and functionality' do
+  scenario 'Test Show-Task page for content, links, validationc content, redirects and functionality' do
 
     create_user
     visit signin_path
@@ -184,6 +184,16 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     expect(page).to have_content 'Due Date'
     expect(page).to have_content 'Complete'
     check 'Complete'
+
+    fill_in 'Description', with: ''
+    fill_in 'Due Date', with: ''
+    click_button 'Update task'
+
+    expect(page).to have_content '1 error prohibited this form from being saved'
+    expect(page).to have_content "Description can't be blank"
+
+    fill_in 'Description', with: 'Test Description Edited'
+    fill_in 'Due Date', with: '02/02/2014'
 
     expect(find_link('Cancel')[:href]).to eq(tasks_path)
     click_button 'Update task'
