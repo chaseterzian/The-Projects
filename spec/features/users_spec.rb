@@ -173,12 +173,53 @@ feature 'User can Create, Read, Update and Delete Users with flash messages' do
     end
 
 
+    expect(page).to have_content 'Edit User'
+    expect(page).to have_content 'First Name'
+    expect(page).to have_content 'Last Name'
+    expect(page).to have_content 'Email'
+    expect(page).to have_content 'Password'
+    expect(page).to have_content 'Password Confirmation'
 
+    expect(find_link('Cancel')[:href]).to eq(users_path)
+    click_link 'Delete'
 
-    #
-    #
-    # expect(page).to have_content 'Edit User'
+    expect(current_path).to eq (users_path)
+    expect(page).to have_content 'User was successfully deleted'
+    expect(page).to_not have_content 'Test Person'
+    expect(page).to_not have_content 'testperson@gmail.com'
+
+    click_link 'Edit'
+    expect(current_path).to eq (edit_user_path(User.first))
+
+    fill_in 'Last Name', with: 'Terzian'
+    fill_in 'Password', with: 'pp'
+    fill_in 'Email', with: 'chaset@gmail.com'
+    fill_in 'Password Confirmation', with: 'pp'
+
+    click_button 'Update User'
+    expect(current_path).to eq (users_path)
+
+    expect(page).to have_content 'User was successfully updated'
+    expect(page).to have_content 'Chase Terzian'
+    expect(page).to have_content 'chaset@gmail.com'
 
   end
+
+    scenario 'User name in navbar links to the User-Show page' do
+
+      create_user
+      visit signin_path
+      login
+      click_button 'Sign In'
+      click_link 'Users'
+      expect(current_path).to eq (users_path)
+
+      within ('.navbar') do
+        click_link 'Chase Gnar'
+      end
+
+      expect(current_path).to eq (user_path(User.first))
+
+    end
 
 end
