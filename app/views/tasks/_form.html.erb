@@ -1,13 +1,3 @@
-<h1> <%= header %> </h1>
-<hr>
-
-<ol class="breadcrumb">
-  <li><%= link_to "Projects", projects_path %></li>
-  <li><%= link_to @project.name, @project %></li>
-  <li><%= link_to "Tasks", project_tasks_path(@project) %></li>
-  <li class="active"><%= "New Task" %></li>
-</ol>
-
 <%= render partial: "shared/errors", locals:{shared_errors: @task} %>
 
 <%= form_for [@project, @task], html: { class: "form-horizontal" } do |f| %>

@@ -1,7 +1,17 @@
 <div class="container">
   <div class="page-header">
 
-    <%= render "form", {name_of_button: "Create task", header: "New Task"} %>
+    <h1>New Task</h1>
+    <hr>
+
+    <ol class="breadcrumb">
+      <li><%= link_to "Projects", projects_path %></li>
+      <li><%= link_to @project.name, @project %></li>
+      <li><%= link_to "Tasks", project_tasks_path(@project) %></li>
+      <li class="active">New Task</li>
+    </ol>
+
+    <%= render "form", {name_of_button: "Create task"} %>
 
   </div>
 </div>
