@@ -15,7 +15,10 @@ Rails.application.routes.draw do
 
     #get "/tasks" => "tasks#tasks"
 
-    resources :tasks
     resources :users
     resources :projects
+      resources :tasks
+    
+
+
 end
