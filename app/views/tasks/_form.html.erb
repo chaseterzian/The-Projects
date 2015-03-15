@@ -2,13 +2,15 @@
 <hr>
 
 <ol class="breadcrumb">
-  <li><%= link_to "Tasks", tasks_path %></li>
+  <li><%= link_to "Projects", projects_path %></li>
+  <li><%= link_to @project.name, @project %></li>
+  <li><%= link_to "Tasks", project_tasks_path(@project) %></li>
   <li class="active"><%= "New Task" %></li>
 </ol>
 
 <%= render partial: "shared/errors", locals:{shared_errors: @task} %>
 
-<%= form_for @task, html: { class: "form-horizontal" } do |f| %>
+<%= form_for [@project, @task], html: { class: "form-horizontal" } do |f| %>
 
 <div class="form-group">
   <%= f.label :description, "Description", class: "col-md-2 control-label" %>
@@ -36,7 +38,7 @@
 <div class="form-group">
   <div class="col-md-offset-2 col-md-3">
     <%= f.submit name_of_button, class: "btn btn-primary" %>
-    <%= link_to "Cancel", tasks_path, class: "btn btn-default" %>
+    <%= link_to "Cancel", project_tasks_path(@project), class: "btn btn-default" %>
   </div>
 </div>
 

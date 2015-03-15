@@ -1,7 +1,7 @@
 <div class="container">
   <div class="page-header">
 
-  <%= link_to "Edit", edit_task_path, class:"btn btn-info pull-right" %>
+  <%= link_to "Edit", edit_project_task_path(@project, @task), class:"btn btn-info pull-right" %>
   <% if @task.complete == true %>
   <s><h1><%= @task.description %></h1></s>
   <% else %>
@@ -10,7 +10,9 @@
   <hr>
 
   <ol class="breadcrumb">
-    <li><a><%= link_to "Tasks", tasks_path %></a></li>
+    <li><a><%= link_to "Projects", projects_path %></a></li>
+    <li><%= link_to @project.name, @project %></li>
+    <li><%= link_to "Tasks", project_tasks_path(@project) %></li>
     <li class="active"><%= @task.description %></li>
   </ol>
 
@@ -19,11 +21,5 @@
   <%= @taskdate.due_date.strftime("%_m/%d/%Y") %>
   <% end %>
 
-
-
-
-
 </div>
 </div>
-
-<!-- no underlines on breadcrumbs -->

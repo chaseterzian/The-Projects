@@ -1,8 +1,8 @@
 <div class="container">
   <div class="page-header">
 
-    <%= link_to "New Task", new_task_path, class: "btn btn-info pull-right" %>
-    <h1>Tasks</h1>
+    <%= link_to "New Task", new_project_task_path(@project, @task), class: "btn btn-info pull-right" %>
+    <h1>Tasks for <%= @project.name %></h1>
     <hr>
 
     <table class="table">
@@ -19,9 +19,9 @@
 
         <td class="col-md-3">
           <% if task.complete == true %>
-          <s><%= link_to task.description, task_path(task) %></s>
+          <s><%= link_to task.description, project_task_path(@project, task) %></s>
           <% else %>
-          <%= link_to task.description, task_path(task) %>
+          <%= link_to task.description, project_task_path(@project, task) %>
           <% end %>
         </td>
 
@@ -33,8 +33,8 @@
 
         <td class="col-md-5">
           <div class="pull-right">
-            <%= link_to "Edit", edit_task_path(task), class: "btn btn-info" %>
-            <%= link_to "Delete", task_path(task), method: "delete", class: "btn btn-danger" %>
+            <%= link_to "Edit", edit_project_task_path(@project, task), class: "btn btn-info" %>
+            <%= link_to "Delete", project_task_path(@project, task), method: "delete", class: "btn btn-danger" %>
           </div>
         </td>
       </tr>
