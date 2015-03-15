@@ -17,11 +17,12 @@
       <% @projects.each do |project| %>
 
       <tr>
-        <td class="col-md-3">
+        <td class="col-md-6">
           <%= link_to "#{project.name}", project_path(project) %>
         </td>
 
-        <td class="col-md-8">
+        <td class="col-md-5">
+          <%= link_to project.tasks.count, project_tasks_path(project) %>
         </td>
 
         <td class="col-md-1">
