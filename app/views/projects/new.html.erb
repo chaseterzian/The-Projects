@@ -1,7 +1,15 @@
 <div class="container">
   <div class="page-header">
 
-    <%= render "form", {header: "New Project", name_of_button: "Create Project"} %>
+    <h1>New Project</h1>
+    <hr>
+
+    <ol class="breadcrumb">
+      <li><%= link_to "Projects", projects_path %></li>
+      <li class="active">New Project</li>
+    </ol>
+
+    <%= render "form", {name_of_button: "Create Project"} %>
 
   </div>
 </div>
