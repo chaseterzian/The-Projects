@@ -11,11 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150316000128) do
+=======
+ActiveRecord::Schema.define(version: 20150316064402) do
+>>>>>>> chase
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
+=======
+  create_table "comments", force: :cascade do |t|
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "task_id"
+  end
+
+>>>>>>> chase
   create_table "memberships", force: :cascade do |t|
     t.string   "role"
     t.integer  "project_id"

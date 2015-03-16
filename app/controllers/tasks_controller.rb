@@ -33,6 +33,8 @@ class TasksController < ApplicationController
   def show
     @task = @project.tasks.find(params[:id])
     @taskdate = @project.tasks.find(params[:id])
+    @comments = @task.comments
+    @comment = @task.comments.new
   end
 
   def update
