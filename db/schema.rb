@@ -39,5 +39,4 @@ ActiveRecord::Schema.define(version: 20150315013531) do
     t.string   "last_name"
     t.string   "password_digest"
   end
-
 end
