@@ -20,5 +20,14 @@
     <%= link_to '0 Tasks', project_tasks_path(@project) %>
     <% end %>
 
+    <p> </p>
+
+    <% if @project.users.any? %>
+    <%= link_to pluralize(@project.users.count, 'Membership'), project_memberships_path(@project) %>
+    <% else %>
+    <%= link_to '0 Memberships', project_memberships_path(@project) %>
+    <% end %>
+
+
   </div>
 </div>
