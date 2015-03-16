@@ -26,8 +26,10 @@
         <td class="col-md-3">
           <% if task.complete == true %>
           <s><%= link_to task.description, project_task_path(@project, task) %></s>
+          <span class="badge"><%= task.comments.count %></span>
           <% else %>
           <%= link_to task.description, project_task_path(@project, task) %>
+          <span class="badge"><%= task.comments.count %></span>
           <% end %>
         </td>
 
@@ -40,7 +42,7 @@
         <td class="col-md-5">
           <div class="pull-right">
             <%= link_to "Edit", edit_project_task_path(@project, task), class: "btn btn-info" %>
-            <%= link_to "Delete", project_task_path(@project, task), method: "delete", class: "btn btn-danger" %>
+            <%= link_to "", project_task_path(@project, task), method: "delete", class: "glyphicon glyphicon-remove " %>
           </div>
         </td>
       </tr>
