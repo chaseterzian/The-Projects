@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="page-header">
+
+    <h1><%= @project.name %>: Manage Memebrs</h1>
+    <hr>
+
+    <ol class="breadcrumb">
+      <li><%= link_to "Projects", projects_path %></li>
+      <li><%= link_to @project.name, @project %></li>
+      <li class="active">Memberships</li>
+    </ol>
+
+
+    <div class="row">
+      <div class="col-md-7">
+        <% if @membership.errors.any? %>
+        <div class="alert alert-danger", role="alert">
+          <h3> <%= pluralize(@membership.errors.count, "error") %>
+            prohibited this form from being saved:</h3>
+            <ul>
+              <% @membership.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-7">
+          <div class="well">
+            <%= form_for [@project, @membership], html:{ class: "form-inline" } do |f| %>
+            <div class="form-group">
+              <%= f.collection_select(:user_id, User.all, :id, :full_name, { prompt: "Please select a user..." }, { class: "form-control" }) %>
+            </div>
+            <div class="form-group">
+              <%= f.collection_select(:role, Membership::ROLE, :to_s, :to_s, {}, { class: "form-control" }) %>
+            </div>
+            <div class="form-group">
+              <%= f.submit "Add New Member", class: "btn btn.primary" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-7">
+          <table class="table">
+            <tbody>
+              <% @project.memberships.each do |membership| %>
+              <tr>
+                <% if membership.id %>
+                <%= form_for [@project, membership], html:{ class: "form-inline "} do |f| %>
+                <td><%= link_to membership.user.full_name, user_path(membership.user) %></td>
+                <td class="form-group">
+                  <%= f.collection_select(:role, Membership::ROLE, :to_s, :to_s, {}, { class: "form-control" }) %>
+                </td>
+                <td class="form-group">
+                  <%= f.submit "Update", class: "btn btn-primary" %>
+                </td>
+                <td>
+                  <%= link_to "", [@project, membership], method: :delete, class: "glyphicon glyphicon-remove" %>
+                </td>
+                <% end %>
+                <% end %>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
