@@ -20,13 +20,28 @@
     <%= link_to '0 Tasks', project_tasks_path(@project) %>
     <% end %>
 
-    <p> </p>
+    <p></p>
 
     <% if @project.users.any? %>
     <%= link_to pluralize(@project.users.count, 'Membership'), project_memberships_path(@project) %>
     <% else %>
     <%= link_to '0 Memberships', project_memberships_path(@project) %>
     <% end %>
+
+    <p></p>
+
+    <div class="form-group">
+      <div class="well">
+        <h3>Delete</h3>
+
+        <p>Deleting this project will also delete
+        <%= "#{pluralize(@project.memberships.count, "membership" )}," %>
+        <%= "#{pluralize(@project.tasks.count, "task" )}" %>
+        and associated comments</p>
+
+        <%= link_to "Delete", @project, method: "delete", class: "btn btn-danger" %>
+      </div>
+    </div>
 
 
   </div>
