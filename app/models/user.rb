@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :memberships, :dependent => :destroy
   has_many :projects, through: :memberships
-  has_many :comments, :dependent => :destroy   #:nullify
+  has_many :comments, :dependent => :nullify
 
   def full_name
     "#{first_name} #{last_name}"
