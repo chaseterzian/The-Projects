@@ -1,21 +1,30 @@
-  <div class="container">
-<div class="page-header">
+<div class="container">
+  <div class="page-header">
 
-  <h1>About</h1>
-  <hr></hr>
+    <h1>About</h1>
+    <hr></hr>
 
-  <div class="row">
-    <div class="col-md-4">
-      <%=image_tag("applebeanbag.jpg", class: "img-responsive")%>
+    <div class="row">
+      <div class="col-md-4">
+        <%=image_tag("applebeanbag.jpg", class: "img-responsive")%>
+      </div>
+
+      <div class="col-md-8">
+        <%= %>
+        <p>We are dedicated to the makers, the creators, the risk-takers.</p>
+        <p>We wake up in the middle of the night and furiously write down ideas about how to make your online life better.</p>
+        <p>Human collaboration and communication is what drives us, and it infuses every feature of gCamp.</p>
+      </div>
     </div>
 
-    <div class="col-md-8">
-      <%= %>
-      <p>We are dedicated to the makers, the creators, the risk-takers.</p>
-      <p>We wake up in the middle of the night and furiously write down ideas about how to make your online life better.</p>
-      <p>Human collaboration and communication is what drives us, and it infuses every feature of gCamp.</p>
-    </div>
+    <h4>gCamp is extremely active. Check out our killer stats below!</h4>
+    <h4>
+      <%= "#{pluralize(Project.count, "Project")}, " %>
+      <%= "#{pluralize(Task.count, "Task")}, " %>
+      <%= "#{pluralize(Membership.count, "Project Member")}, " %>
+      <%= "#{pluralize(User.count, "User")}, " %>
+      <%= "#{pluralize(Comment.count, "Comment")}" %>
+    </h4>
+
   </div>
-
-</div>
 </div>

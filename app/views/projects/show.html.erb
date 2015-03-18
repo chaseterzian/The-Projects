@@ -6,7 +6,7 @@
       <%= link_to "Delete", @project, method: "delete", class: "btn btn-danger" %>
     </div>
 
-    <h1> <%= @project.name %> </h1>
+    <h1><%= @project.name %></h1>
     <hr>
 
     <ol class="breadcrumb">
@@ -14,19 +14,10 @@
       <li class="active"><%= @project.name %></li>
     </ol>
 
-    <% if @project.tasks.any? %>
-    <%= link_to pluralize(@project.tasks.count, 'Task'), project_tasks_path(@project) %>
-    <% else %>
-    <%= link_to '0 Tasks', project_tasks_path(@project) %>
-    <% end %>
 
-    <p></p>
+    <p><%= link_to pluralize(@project.tasks.count, 'Task'), project_tasks_path(@project) %></p>
+    <p><%= link_to pluralize(@project.users.count, 'Membership'), project_memberships_path(@project) %></p>
 
-    <% if @project.users.any? %>
-    <%= link_to pluralize(@project.users.count, 'Membership'), project_memberships_path(@project) %>
-    <% else %>
-    <%= link_to '0 Memberships', project_memberships_path(@project) %>
-    <% end %>
 
     <p></p>
 
