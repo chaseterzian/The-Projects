@@ -20,9 +20,9 @@ feature 'User can sign out, is redirected to root-path, and no longer has access
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Tasks'
       expect(page).to have_link 'Users'
       expect(page).to have_link 'Projects'
+      expect(page).to_not have_link 'Tasks'
     end
 
     expect(page).to have_link 'gCamp'
@@ -47,7 +47,7 @@ feature 'User can sign out, is redirected to root-path, and no longer has access
       expect(page).to_not have_link 'Tasks'
       expect(page).to_not have_link 'Users'
       expect(page).to_not have_link 'Projects'
-    end 
+    end
 
   end
 end

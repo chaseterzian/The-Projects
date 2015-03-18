@@ -21,9 +21,9 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Tasks'
       expect(page).to have_link 'Users'
       expect(page).to have_link 'Projects'
+      expect(page).to_not have_link 'Tasks'
     end
 
 
@@ -54,9 +54,9 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Tasks'
       expect(page).to have_link 'Users'
       expect(page).to have_link 'Projects'
+      expect(page).to_not have_link 'Tasks'
     end
 
 
@@ -97,9 +97,9 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Tasks'
       expect(page).to have_link 'Users'
       expect(page).to have_link 'Projects'
+      expect(page).to_not have_link 'Tasks'
     end
 
 
@@ -136,9 +136,9 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Tasks'
       expect(page).to have_link 'Users'
       expect(page).to have_link 'Projects'
+      expect(page).to_not have_link 'Tasks'
     end
 
 
@@ -162,7 +162,7 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
   scenario 'Test delete project and existing project functons and flash messages' do
 
     create_user
-    create_existing_project
+    create_project
     visit signin_path
     login
     click_button 'Sign In'
@@ -172,8 +172,10 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
     click_button 'Create Project'
     expect(current_path).to eq (project_path(Project.last))
 
-
+    within(".well") do
     click_link 'Delete'
+  end
+
     expect(current_path).to eq (projects_path)
 
     expect(page).to have_content 'Project was successfully deleted'

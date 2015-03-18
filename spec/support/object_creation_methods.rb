@@ -33,7 +33,13 @@ def enter_new_test_person_information
   click_button 'Create User'
 end
 
-def create_existing_project
+def create_project
   project = Project.create!(
   name: 'Existing Project')
+end
+
+def create_task
+  task = Task.create!(
+  description: 'Test Task'
+  )
 end
