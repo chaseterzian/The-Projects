@@ -6,12 +6,6 @@ namespace :cleanup do
       puts 'Removes all memberships where their users have already been deleted'
     end
 
-  desc 'Removes all memberships where their projects have already been deleted'
-    task above_task: :environment do
-
-      puts 'Removes all memberships where their projects have already been deleted'
-    end
-
   desc 'Removes all tasks where their projects have been deleted'
     task above_task: :environment do
 
