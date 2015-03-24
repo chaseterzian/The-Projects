@@ -29,6 +29,7 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
 
     expect(page).to have_content 'Projects'
     expect(page).to have_content 'Name'
+    expect(page).to have_content 'Tasks'
     click_link 'New Project'
     expect(current_path).to eq (new_project_path)
 
@@ -59,6 +60,10 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
       expect(page).to_not have_link 'Tasks'
     end
 
+    within(".breadcrumb") do
+      expect(page).to have_link 'Projects'
+      expect(page).to have_content 'New Project'
+    end
 
     expect(page).to have_content 'New Project'
     expect(page).to have_content 'Name'
@@ -102,11 +107,17 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
       expect(page).to_not have_link 'Tasks'
     end
 
+    within(".breadcrumb") do
+      expect(page).to have_link 'Projects'
+      expect(page).to have_content 'Test Project'
+    end
+
+    expect(page).to have_link '0 Tasks'
+    expect(page).to have_link '0 Memberships'
 
     expect(page).to have_content 'Project was successfully created'
     expect(page).to have_content 'Test Project'
     expect(page).to have_link 'Delete'
-    # expect(find_link('Delete')[:href]).to eq(projects_path)
     click_link 'Edit'
 
     expect(current_path).to eq (edit_project_path(Project.last))
@@ -141,6 +152,11 @@ feature 'User can Create, Read, Update and Delete Projects with flash messages.'
       expect(page).to_not have_link 'Tasks'
     end
 
+    within(".breadcrumb") do
+      expect(page).to have_link 'Projects'
+      expect(page).to have_link 'Test Project'
+      expect(page).to have_content 'Edit'
+    end
 
     expect(page).to have_content 'Edit Project'
     expect(page).to have_content 'Name'
