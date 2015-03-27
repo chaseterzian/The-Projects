@@ -121,7 +121,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     fill_in 'Description', with: 'Test Description'
     fill_in 'Due Date', with: '01/01/2015'
     click_button 'Create task'
-    # expect(current_path).to eq (project_task_path(project))
+    expect(current_path).to eq (project_task_path(project, Task.last))
 
     expect(page).to have_link 'gCamp'
     expect(page).to have_link 'Chase Gnar'
@@ -141,7 +141,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     within('ol.breadcrumb') do
       expect(page).to have_link 'Project'
       expect(page).to have_link 'Existing Project'
-      expect(page).to have_content 'Tasks'
+      expect(page).to have_link 'Tasks'
       expect(page).to have_content 'Test Description'
     end
 
@@ -149,7 +149,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     expect(page).to have_content '1/01/2015'
 
     click_link 'Edit'
-    # expect(current_path).to eq edit_project_task_path(project)
+    expect(current_path).to eq edit_project_task_path(project, Task.last)
 
   end
 
@@ -168,7 +168,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     fill_in 'Due Date', with: '01/01/2015'
     click_button 'Create task'
     click_link 'Edit'
-    # expect(current_path).to eq edit_project_task_path(project)
+    expect(current_path).to eq edit_project_task_path(project, Task.last)
 
     expect(page).to have_link 'gCamp'
     expect(page).to have_link 'Chase Gnar'
@@ -188,8 +188,9 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     within('ol.breadcrumb') do
       expect(page).to have_link 'Project'
       expect(page).to have_link 'Existing Project'
-      expect(page).to have_content 'Tasks'
-      expect(page).to have_content 'Test Description'
+      expect(page).to have_link 'Tasks'
+      expect(page).to have_link 'Test Description'
+      expect(page).to have_content 'Edit'
     end
 
     expect(page).to have_content 'Edit Task'
@@ -208,10 +209,10 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     fill_in 'Description', with: 'Test Description Edited'
     fill_in 'Due Date', with: '02/02/2014'
 
-    # expect(find_link('Cancel')[:href]).to eq(tasks_path)
+    expect(find_link('Cancel')[:href]).to eq(project_tasks_path(project))
     click_button 'Update task'
 
-    # expect(current_path).to eq task_path(Task.last)
+    expect(current_path).to eq project_task_path(project, Task.last)
     expect(page).to have_content 'Task was successfully updated'
 
   end
@@ -234,22 +235,22 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     fill_in 'Description', with: 'Test Description Edited'
     fill_in 'Due Date', with: '02/02/2014'
     click_button 'Update task'
-    # expect(current_path).to eq task_path(Task.last)
+    expect(current_path).to eq project_task_path(project, Task.last)
 
     expect(page).to have_content 'Test Description Edited'
     expect(page).to have_content 'Due Date:'
     expect(page).to have_content '2/02/2014'
+    expect(page).to have_content 'Comments'
     expect(page).to have_link 'Edit'
+    expect(page).to have_button 'Add Comment'
 
     within('ol.breadcrumb') do
       expect(page).to have_link 'Project'
       expect(page).to have_link 'Existing Project'
-      expect(page).to have_content 'Tasks'
+      expect(page).to have_link 'Tasks'
       expect(page).to have_content 'Test Description Edited'
-      click_link 'Tasks'
     end
 
-    # expect(current_path).to eq tasks_path
 
   end
 
@@ -279,7 +280,8 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     expect(page).to have_link 'Test Description Edited'
     expect(page).to have_content '2/02/2014'
     expect(page).to have_link 'Edit'
-    # expect(page).to have_link 'Delete'--how to test for a glyphicaon
+    page.find('.glyphicon-remove').click
+
 
   end
 end
