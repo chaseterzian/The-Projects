@@ -1,0 +1,12 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <%= link_to "gCamp", root_path, class: "navbar-brand" %>
+    <% if current_user %>
+    <%= link_to "Sign Out", signout_path, class: "navbar-brand navbar-right" %>
+    <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user), class: "navbar-brand navbar-right" %></li>
+    <% else %>
+    <%= link_to "Sign Up", signup_path, class: "navbar-brand navbar-right" %>
+    <%= link_to "Sign In", signin_path, class: "navbar-brand navbar-right" %>
+    <% end %>
+  </div>
+</nav>

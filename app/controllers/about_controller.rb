@@ -1,5 +1,5 @@
 # if current_user
-  class AboutController < ApplicationController
+  class AboutController < PrivateController
 # else
 #   class AboutController < BlahsController
 # end
