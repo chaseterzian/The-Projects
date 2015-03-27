@@ -1,12 +1,7 @@
-# if current_user
-  class AboutController < PrivateController
-# else
-#   class AboutController < BlahsController
-# end
-
-
+class AboutController < ApplicationController
 
   def about
   end
+
 
 end

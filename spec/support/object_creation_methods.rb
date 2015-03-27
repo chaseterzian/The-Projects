@@ -1,10 +1,5 @@
 def create_user
-  user = User.create!(
-  first_name: 'Chase',
-  last_name: 'Gnar',
-  email: 'chasegnar@gmail.com',
-  password: 'pp',
-  password_confirmation: 'pp')
+  user = User.create! first_name: 'Chase', last_name: 'Gnar', email: 'chasegnar@gmail.com', password: 'pp', password_confirmation: 'pp'
 end
 
 def login

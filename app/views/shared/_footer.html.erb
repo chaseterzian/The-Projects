@@ -1,26 +1,53 @@
-<div class="container">
+<% if current_page?(about_path) ||
+  current_page?(terms_path) ||
+  current_page?(faq_path) ||
+  current_page?(signup_path) ||
+  current_page?(signin_path) ||
+  current_page?(root_path) %>
 
-  <div class="row">
-    <div class="col-md-8">
-      <%= link_to "About", about_path %>
-      |
-      <%= link_to "Terms", terms_path %>
-      |
-      <%= link_to "FAQ", faq_path %>
-      <% if current_user.present? %>
-      |
-      <%= link_to "Users", users_path %>
-      |
-      <%= link_to "Projects", projects_path %>
-      <% else %>
-      <% end%>
-    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
 
-    <div class="col-md-4 container-fluid">
-      <%= link_to(image_tag("gschoollink.png", class: "links-right"), "https://students.gschool.it/students/275") %>
-      <%= link_to(image_tag("twitterlink.png", class: "links-right"), "http://twitter.com/chaseterzian") %>
-      <%= link_to(image_tag("githublink.png", class: "links-right"),  "https://github.com/chaseterzian") %>
-      <%= link_to(image_tag("linkedinlink.jpg", class: "links-right"), "https://www.linkedin.com/in/chaseterzian") %>
+        <%= link_to "About", about_path %>
+        |
+        <%= link_to "Terms", terms_path %>
+        |
+        <%= link_to "FAQ", faq_path %>
+        <% if current_user.present? %>
+        |
+        <%= link_to "Users", users_path %>
+        |
+        <%= link_to "Projects", projects_path %>
+        <% else %>
+        <% end%>
+      </div>
+
+      <div class="col-md-4 container-fluid">
+        <%= link_to(image_tag("gschoollink.png", class: "links-right"), "https://students.gschool.it/students/275") %>
+        <%= link_to(image_tag("twitterlink.png", class: "links-right"), "http://twitter.com/chaseterzian") %>
+        <%= link_to(image_tag("githublink.png", class: "links-right"),  "https://github.com/chaseterzian") %>
+        <%= link_to(image_tag("linkedinlink.jpg", class: "links-right"), "https://www.linkedin.com/in/chaseterzian") %>
+      </div>
     </div>
   </div>
-</div>
+
+  <% else %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+
+        <%= link_to "Home", root_path %>
+        |
+        <%= link_to "About", about_path %>
+        |
+        <%= link_to "Terms", terms_path %>
+        |
+        <%= link_to "FAQ", faq_path %>
+
+      </div>
+    </div>
+  </div>
+
+  <% end %>
