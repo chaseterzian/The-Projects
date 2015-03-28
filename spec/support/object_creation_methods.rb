@@ -8,6 +8,7 @@ def login
 end
 
 def signup
+  fill_in
   fill_in 'First Name', with: 'Michael'
   fill_in 'Last Name', with: 'Sprinklewood'
   fill_in 'Email', with: 'Michael@gmail.com'
