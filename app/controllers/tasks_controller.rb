@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-    before_filter :authenticate_user
+    before_action :authenticate_user
 
     before_action do
       @project = Project.find(params[:project_id])
