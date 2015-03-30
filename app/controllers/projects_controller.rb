@@ -1,9 +1,10 @@
 class ProjectsController < ApplicationController
 
   before_action :authenticate_user
+  before_action :authorize_user_for_project, except: [:index, :new, :create] #show edit update delete
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def new
@@ -24,13 +25,12 @@ class ProjectsController < ApplicationController
     end
   end
 
-
   def edit
     @project = Project.find(params[:id])
   end
 
   def show
-      @project = Project.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def update
@@ -55,9 +55,25 @@ class ProjectsController < ApplicationController
 
   private
 
+
   def project_params
     params.require(:project).permit(:name, :project_id, :user_id, :role)
   end
 
-
+  def authorize_user_for_project
+    project = Project.find(params[:id])
+    unless current_user.projects.include?(project)
+      flash[:warning] = "You do not have access to that project"
+      redirect_to projects_path
+    end
+  end
 end
+
+
+  #current_user.memberships.map(&:project_id).include?(project.id)
+  #project.memberships.map(&:user_id).include?(current_user.id)
+
+    # if current_user.projects.where(id: project.id).empty?
+    # no dice
+    # unless current_user.projects.where(id: project.id).any?
+    # also no dice

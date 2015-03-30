@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
 
     before_action :authenticate_user
-
     before_action do
       @project = Project.find(params[:project_id])
     end
@@ -61,5 +60,11 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:description, :complete, :due_date, :project_id)
     end
+
+    # def authorize_user_for_tasks
+    #   task = Task.find(params[:id])
+    #   unless current_user.tasks.include?(task)
+    #
+    # end
 
   end
