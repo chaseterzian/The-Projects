@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
         user_id: current_user.id,
         role: "Owner")
       flash[:message] = "Project was successfully created"
-      redirect_to project_path(@project)
+      redirect_to project_tasks_path(@project)
     else
       render :new
     end
