@@ -14,8 +14,8 @@
         </tr>
       </thead>
 
-      <% current_user.projects.each do |project| %>
 
+      <% current_user.projects.each do |project| %>
       <tr>
         <td class="col-md-6">
           <%= link_to "#{project.name}", project_path(project) %>

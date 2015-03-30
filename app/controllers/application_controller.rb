@@ -19,6 +19,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+
+  # protected
+  #
+  # def members_only
+  #
+
+
 end
 
 

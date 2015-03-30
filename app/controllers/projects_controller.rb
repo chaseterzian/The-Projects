@@ -14,9 +14,9 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       Membership.create(
-        project_id: @project.id,
-        user_id: current_user.id,
-        role: "Owner")
+      project_id: @project.id,
+      user_id: current_user.id,
+      role: "Owner")
       flash[:message] = "Project was successfully created"
       redirect_to project_tasks_path(@project)
     else
@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+      @project = Project.find(params[:id])
   end
 
   def update
