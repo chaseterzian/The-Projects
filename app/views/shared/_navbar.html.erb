@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
 
-    <% if current_page?(about_path) ||
+  <% if current_page?(about_path) ||
       current_page?(terms_path) ||
       current_page?(faq_path) ||
       current_page?(signup_path) ||
@@ -17,7 +17,8 @@
       <%= link_to "Sign In", signin_path, class: "navbar-brand navbar-right" %>
       <% end %>
 
-    <% else %>
+  <% else %>
+
 
       <%= link_to "gCamp", projects_path, class: "navbar-brand" %>
       <ul class="nav navbar-nav">
@@ -43,7 +44,7 @@
       <%= link_to "Sign In", signin_path, class: "navbar-brand navbar-right" %>
       <% end %>
 
-      <% end %>
+  <% end %>
 
     </div>
   </nav>

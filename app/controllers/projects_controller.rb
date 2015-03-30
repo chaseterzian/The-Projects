@@ -13,6 +13,10 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
+      Membership.create(
+        project_id: @project.id,
+        user_id: current_user.id,
+        role: "Owner")
       flash[:message] = "Project was successfully created"
       redirect_to project_path(@project)
     else
@@ -52,7 +56,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:name, :project_id, :user_id, :role)
   end
 
 
