@@ -24,11 +24,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def authorize_user_to_delete_membership
-  #   if current_user.project.memberships.include?(@membership)
-  #     flash[:message] = "TESTING MEMBERSHIP DELETE OF SELF"
-  #   end
-  # end
 
   def user_role_is_owner
     @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
@@ -58,6 +53,11 @@ end
 # no dice
 # unless current_user.projects.where(id: project.id).any?
 # also no dice
+  # def authorize_user_to_delete_membership
+  #   if current_user.project.memberships.include?(@membership)
+  #     flash[:message] = "TESTING MEMBERSHIP DELETE OF SELF"
+  #   end
+  # end
 
 
 

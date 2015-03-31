@@ -1,4 +1,4 @@
-class MembershipsController < ApplicationController
+class MembershipsController < PrivateController
   before_action :set_project_params
   before_action :authorize_user_for_project
 

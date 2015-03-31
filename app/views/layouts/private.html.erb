@@ -10,7 +10,9 @@
 
 <body>
 
-  <%= render partial: "shared/navbar", locals:{internal: false} %>
+
+ <%= render partial: "shared/navbar", locals:{internal: true} %>
+
 
 <div class="container">
   <% if flash[:message].present? %>
@@ -32,7 +34,7 @@
 
 <footer class="flux">
 
-  <%= render partial: "shared/footer", locals:{internal: false} %>
+  <%= render partial: "shared/footer", locals:{internal: true} %>
 
 </div>
 </footer>

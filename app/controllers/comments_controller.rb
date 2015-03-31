@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class CommentsController < PrivateController
 
   before_action do
     @task = Task.find(params[:task_id])

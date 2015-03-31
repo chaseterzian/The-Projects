@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class ProjectsController < PrivateController
   before_action :set_project_params, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
   before_action :authorize_user_for_project, except: [:index, :new, :create]
