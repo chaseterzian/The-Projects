@@ -68,8 +68,10 @@
                 </td>
             <% else %>
 
-              <%= form_for [@project, membership], html:{ class: "form-inline"} do |f| %>
+                <%= form_for [@project, membership], html:{ class: "form-inline"} do |f| %>
                 <td><%= "#{membership.role}" %></td>
+                <%= link_to "", [@project, membership], method: :delete, class: "glyphicon glyphicon-remove" %>
+
               <% end %>
 
             <% end %>
