@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
-  before_action do
-    @project = Project.find(params[:project_id])
-  end
+  before_action :set_project_params
+  before_action :authorize_user_for_project
+
 
   def index
     @membership = @project.memberships.new
@@ -35,8 +35,14 @@ class MembershipsController < ApplicationController
     redirect_to project_memberships_path
   end
 
+  private
 
   def membership_params
     params.require(:membership).permit(:user_id, :project_id, :role)
   end
+
+  def set_project_params
+    @project = Project.find(params[:project_id])
+  end
+
 end
