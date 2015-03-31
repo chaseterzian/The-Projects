@@ -1,6 +1,7 @@
 class MembershipsController < ApplicationController
   before_action :set_project_params
   before_action :authorize_user_for_project
+  # before_action :authorize_user_to_delete_membership, only: [:destroy]
 
 
   def index
