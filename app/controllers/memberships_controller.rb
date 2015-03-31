@@ -37,7 +37,11 @@ class MembershipsController < PrivateController
     membership = @project.memberships.find(params[:id])
     membership.destroy
     flash[:message] = "#{membership.user.full_name} was successfully removed"
-    redirect_to projects_path
+    if membership.user_id != current_user.id
+      redirect_to project_memberships_path
+    else
+      redirect_to projects_path
+    end
   end
 
   private
