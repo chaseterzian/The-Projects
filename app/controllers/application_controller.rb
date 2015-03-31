@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def user_roll_is_owner
+  def user_role_is_owner
     @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
   end
 
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
 
 
   helper_method :current_user
-  helper_method :user_roll_is_owner
+  helper_method :user_role_is_owner
   helper_method :user_permission?
 
 end
