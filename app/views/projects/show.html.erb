@@ -1,11 +1,11 @@
 <div class="container">
   <div class="page-header">
 
-    <div class="pull-right">
-      <% if current_user_is_project_owner %>
+    <% if user_roll_is_owner %>
+      <div class="pull-right">
         <%= link_to "Edit", edit_project_path, class: "btn btn-info" %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <h1><%= @project.name %></h1>
     <hr>
@@ -22,19 +22,20 @@
 
     <p></p>
 
+  <% if user_roll_is_owner %>
     <div class="form-group">
       <div class="well">
         <h3>Delete</h3>
 
         <p>Deleting this project will also delete
-        <%= "#{pluralize(@project.memberships.count, "membership" )}," %>
-        <%= "#{pluralize(@project.tasks.count, "task" )}" %>
-        and associated comments</p>
+          <%= "#{pluralize(@project.memberships.count, "membership" )}," %>
+          <%= "#{pluralize(@project.tasks.count, "task" )}" %>
+          and associated comments</p>
 
-        <%= link_to "Delete", @project, method: "delete", class: "btn btn-danger", data: { confirm: "Are you sure?"} %>
+          <%= link_to "Delete", @project, method: "delete", class: "btn btn-danger", data: { confirm: "Are you sure?"} %>
+        </div>
       </div>
+  <% end %>
+
     </div>
-
-
   </div>
-</div>

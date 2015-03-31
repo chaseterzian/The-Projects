@@ -24,22 +24,31 @@ class ApplicationController < ActionController::Base
     end
   end
 
-   def current_user_is_project_owner
-     @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
-   end
+  def user_roll_is_owner
+    @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
+  end
+
+  def user_permission?
+    if @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
+    else
+      flash[:warning] = "You do not have access"
+      redirect_to project_path(@project)
+    end
+  end
 
 
   helper_method :current_user
-  helper_method :current_user_is_project_owner
+  helper_method :user_roll_is_owner
+  helper_method :user_permission?
 
 end
-  #current_user.memberships.map(&:project_id).include?(project.id)
-  #project.memberships.map(&:user_id).include?(current_user.id)
+#current_user.memberships.map(&:project_id).include?(project.id)
+#project.memberships.map(&:user_id).include?(current_user.id)
 
-    # if current_user.projects.where(id: project.id).empty?
-    # no dice
-    # unless current_user.projects.where(id: project.id).any?
-    # also no dice
+# if current_user.projects.where(id: project.id).empty?
+# no dice
+# unless current_user.projects.where(id: project.id).any?
+# also no dice
 
 
 
