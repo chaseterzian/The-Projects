@@ -1,6 +1,10 @@
 class MembershipsController < ApplicationController
   before_action :set_project_params
   before_action :authorize_user_for_project
+
+  #check if user is member or owner
+  #otherwise kick them out
+
   # before_action :authorize_user_to_delete_membership, only: [:destroy]
 
 
@@ -33,7 +37,7 @@ class MembershipsController < ApplicationController
     membership = @project.memberships.find(params[:id])
     membership.destroy
     flash[:message] = "#{membership.user.full_name} was successfully removed"
-    redirect_to project_memberships_path
+    redirect_to projects_path
   end
 
   private

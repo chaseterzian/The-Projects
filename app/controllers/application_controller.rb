@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
     @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
   end
 
-  def user_permission?
+  def owner_permission
     if @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
     else
       flash[:warning] = "You do not have access"
