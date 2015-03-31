@@ -2,7 +2,9 @@
   <div class="page-header">
 
     <div class="pull-right">
-      <%= link_to "Edit", edit_project_path, class: "btn btn-info" %>
+      <% if current_user_is_project_owner %>
+        <%= link_to "Edit", edit_project_path, class: "btn btn-info" %>
+      <% end %>
     </div>
 
     <h1><%= @project.name %></h1>

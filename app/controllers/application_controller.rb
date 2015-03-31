@@ -24,10 +24,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
+   def current_user_is_project_owner
+     @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
+   end
+
 
   helper_method :current_user
+  helper_method :current_user_is_project_owner
 
 end
+  #current_user.memberships.map(&:project_id).include?(project.id)
+  #project.memberships.map(&:user_id).include?(current_user.id)
+
+    # if current_user.projects.where(id: project.id).empty?
+    # no dice
+    # unless current_user.projects.where(id: project.id).any?
+    # also no dice
+
 
 
 # @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]  #optimization

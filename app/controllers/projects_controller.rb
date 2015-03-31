@@ -3,7 +3,6 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user
   before_action :authorize_user_for_project, except: [:index, :new, :create] #show edit update delete
 
-
   def index
     @projects = current_user.projects
   end
@@ -57,16 +56,8 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:name, :project_id, :user_id, :role)
   end
 
+
   def set_project_params
     @project = Project.find(params[:id])
   end
 end
-
-
-  #current_user.memberships.map(&:project_id).include?(project.id)
-  #project.memberships.map(&:user_id).include?(current_user.id)
-
-    # if current_user.projects.where(id: project.id).empty?
-    # no dice
-    # unless current_user.projects.where(id: project.id).any?
-    # also no dice
