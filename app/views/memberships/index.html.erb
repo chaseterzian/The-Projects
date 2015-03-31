@@ -63,15 +63,15 @@
                 <td class="form-group">
                   <%= f.submit "Update", class: "btn btn-primary" %>
                 </td>
-                <td>
-                  <%= link_to "", [@project, membership], method: :delete, class: "glyphicon glyphicon-remove" %>
-                </td>
+                <td><%= link_to "", [@project, membership], method: :delete, class: "glyphicon glyphicon-remove" %></td>
             <% else %>
 
                 <%= form_for [@project, membership], html:{ class: "form-inline"} do |f| %>
-                <td><%= "#{membership.role}" %></td>
-
-              <% end %>
+                  <td><%= "#{membership.role}" %></td>
+                    <% if current_user.id == membership.user_id %>
+                      <td><%= link_to "", [@project, membership], method: :delete, class: "glyphicon glyphicon-remove" %></td>
+                    <% end %>
+                <% end %>
 
             <% end %>
                 <% end %>
