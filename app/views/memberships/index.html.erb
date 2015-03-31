@@ -71,6 +71,8 @@
                 <td><%= "#{membership.role}" %></td>
                     <% if current_user.id == membership.user_id %>
                       <td><%= link_to "", [@project, membership], method: :delete, class: "glyphicon glyphicon-remove" %></td>
+                    <% else %>
+                        <td></td>
                     <% end %>
                 <% end %>
             <% end %>
