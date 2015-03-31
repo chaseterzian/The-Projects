@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
   before_action :authorize_user_for_project, except: [:index, :new, :create] #show edit update delete
 
@@ -26,15 +26,12 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def show
-    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
     if @project.update(project_params)
       flash[:message] = "Project was successfully updated"
       redirect_to project_path
@@ -44,7 +41,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     if @project.destroy
       flash[:message] = "Project was successfully deleted"
       redirect_to projects_path
@@ -60,12 +56,8 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:name, :project_id, :user_id, :role)
   end
 
-  def authorize_user_for_project
-    project = Project.find(params[:id])
-    unless current_user.projects.include?(project)
-      flash[:warning] = "You do not have access to that project"
-      redirect_to projects_path
-    end
+  def set_project
+    @project = Project.find(params[:id])
   end
 end
 

@@ -4,6 +4,7 @@ class TasksController < ApplicationController
     before_action do
       @project = Project.find(params[:project_id])
     end
+    before_action :authorize_user_for_project
 
 
     def index
@@ -46,13 +47,11 @@ class TasksController < ApplicationController
       end
     end
 
-
     def destroy
       Task.destroy(params[:id])
       flash[:message] = "Task was successfully deleted"
       redirect_to project_tasks_path(@project)
     end
-
 
     private
 
@@ -62,9 +61,12 @@ class TasksController < ApplicationController
     end
 
     # def authorize_user_for_tasks
-    #   task = Task.find(params[:id])
-    #   unless current_user.tasks.include?(task)
-    #
+    #   # project = Project.find(params[:id])
+    #   unless current_user.projects.include?(task)   #&& current_user.projects.include?(task)
+    #     flash[:warning] = "You do not have access to that project"
+    #     redirect_to projects_path
+    #   end
     # end
+
 
   end

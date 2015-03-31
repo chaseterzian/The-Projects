@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authorize_user_for_project
+    unless current_user.projects.include?(@project)
+      flash[:warning] = "You do not have access to that project"
+      redirect_to projects_path
+    end
+  end
+
+
   helper_method :current_user
 
 end
