@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     if current_user.present?
     else
+      session[:piss_off] ||= request.fullpath ######
       flash[:warning] = "You must sign in"
       redirect_to signin_path
-
     end
   end
 
