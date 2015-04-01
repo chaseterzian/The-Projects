@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def owner_permission
-    if @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
+    if @project.memberships.where(user_id: current_user.id).include?(role: "Owner") 
     else
       flash[:warning] = "You do not have access"
       redirect_to project_path(@project)

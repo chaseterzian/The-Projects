@@ -1,6 +1,7 @@
 class UsersController < PrivateController
 
   before_action :authenticate_user
+  # before_action :set_user, except: [:index, :new, :create]
 
   def index
     @users = User.all
@@ -22,7 +23,10 @@ class UsersController < PrivateController
 
   def edit
     @user = User.find(params[:id])
-    @user_edit_for_partial = User.find(params[:id])
+    if current_user.id != @user.id
+      render file: "/Users/chaseterzian/workspace/07-gcamptesting/gcamp/public/nopage.html", layout: false, status: 404
+      # render_404
+    end
   end
 
   def show
@@ -54,5 +58,14 @@ class UsersController < PrivateController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
+
+  # def render_404
+  #   render file: "/Users/chaseterzian/workspace/07-gcamptesting/gcamp/public/404.html", layout: false, status: 404
+  # end
+
+  # def set_user
+  #   @user = User.find(params[:id])
+  # end
+
 
 end
