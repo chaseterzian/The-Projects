@@ -1,15 +1,16 @@
 class MembershipsController < PrivateController
   before_action :set_project_params
   before_action :authorize_user_for_project
+  # before_action :cant_update_last_owner, only: [:update, :destroy]
 
   #check if user is member or owner
   #otherwise kick them out
 
-  # before_action :authorize_user_to_delete_membership, only: [:destroy]
 
 
   def index
     @membership = @project.memberships.new
+    @project_owners_count = @project.memberships.where(role: "Owner").count
   end
 
   def create
@@ -24,12 +25,14 @@ class MembershipsController < PrivateController
   end
 
   def update
-    membership = Membership.find(params[:id])
-    if membership.update(membership_params)
-      flash[:message] = "#{membership.user.full_name} was successfully updated"
+    @membership = Membership.find(params[:id])
+    if @membership.role == "Owner" && @project.memberships.where(role: "Owner").count == 1
+      flash[:warning] = "Projects must have at least one owner"
       redirect_to project_memberships_path
     else
-      render :index
+      @membership.update(membership_params)
+      flash[:message] = "#{@membership.user.full_name} was successfully updated"
+      redirect_to project_memberships_path
     end
   end
 
@@ -53,5 +56,7 @@ class MembershipsController < PrivateController
   def set_project_params
     @project = Project.find(params[:project_id])
   end
+
+
 
 end
