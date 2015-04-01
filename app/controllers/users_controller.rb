@@ -26,7 +26,7 @@ class UsersController < PrivateController
       @user = User.find(params[:id])
     if current_user.admin == true
     elsif current_user.id != @user.id
-      render file: "/Users/chaseterzian/workspace/07-gcamptesting/gcamp/public/nopage.html", layout: false, status: 404
+      render file: "#{Rails.root}/public/nopage.html", layout: false, status: 404
     end
   end
 
