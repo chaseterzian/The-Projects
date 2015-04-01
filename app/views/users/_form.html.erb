@@ -41,6 +41,21 @@
   </div>
 </div>
 
+
+
+
+<% if current_user.admin == true %>
+<div class ="form-group">
+  <div class ="col-sm-offset-2 col-sm-10">
+    <%= f.check_box :admin %>
+    <%= f.label :admin %>
+  </div>
+</div>
+<% end %>
+
+
+
+
 <div class="form-group">
   <div class="col-md-offset-2 col-md-3">
     <%= f.submit name_of_button, class: "btn btn-primary" %>

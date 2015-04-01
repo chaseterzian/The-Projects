@@ -21,13 +21,15 @@
 #    # membership.update_attribute(:role, 'owner')
 #    # membership.update_attribute(:project_id, 999102)
 #    # membership.update_attribute(:user_id, 999103)
-#
-#
-# user = User.create(
-#   first_name: 'Chase',
-#   last_name: 'Money',
-#   email: 'fuckgcamp@money.com',
-#   password: 'pp')
+
+# 
+# User.create(
+#   first_name: 'Admin',
+#   last_name: 'Jones',
+#   email: 'admin@example.com',
+#   password_digest: 'pp',
+#   admin: 'true')
+
 #    # id: 999200)
 #    # user.update_attribute(:first_name, 'Chasen')
 #    # user.update_attribute(:last_name, 'Domino')
@@ -134,7 +136,7 @@
 # role: 'member'
 # )
 #
-#    p user
+  #  p user
 #    p membership
 #    p project
 #    p comment
