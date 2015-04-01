@@ -9,36 +9,74 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
 
-  <%= render partial: "shared/navbar", locals:{internal: false} %>
+      <% if !current_user %>
+      <%= link_to "gCamp", root_path, class: "navbar-brand" %>
+      <% end %>
 
-<div class="container">
-  <% if flash[:message].present? %>
-  <div class="alert alert-success text-center" role="alert"><%= flash[:message] %></div>
+      <% if current_user %>
+      <%= link_to "gCamp", projects_path, class: "navbar-brand" %>
+      <%= link_to "Sign Out", signout_path, class: "navbar-brand navbar-right" %>
+      <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user), class: "navbar-brand navbar-right" %></li>
+      <% else %>
+      <%= link_to "Sign Up", signup_path, class: "navbar-brand navbar-right" %>
+      <%= link_to "Sign In", signin_path, class: "navbar-brand navbar-right" %>
+      <% end %>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <% if flash[:message].present? %>
+    <div class="alert alert-success text-center" role="alert"><%= flash[:message] %></div>
   </hr>
   <% end %>
 </div>
 
-
-
 <div class="container">
   <% if flash[:warning].present? %>
   <div class="alert alert-danger text-center" role="alert"><%= flash[:warning] %></div>
-  </hr>
-  <% end %>
+</hr>
+<% end %>
 </div>
 
 
 <%= yield %>
 
 
-<footer class="flux">
+<footer>
 
-  <%= render partial: "shared/footer", locals:{internal: false} %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+
+        <%= link_to "About", about_path %>
+        |
+        <%= link_to "Terms", terms_path %>
+        |
+        <%= link_to "FAQ", faq_path %>
+        <% if current_user.present? %>
+        |
+        <%= link_to "Users", users_path %>
+        |
+        <%= link_to "Projects", projects_path %>
+        <% else %>
+        <% end %>
+      </div>
+
+      <div class="col-md-4 container-fluid">
+        <%= link_to(image_tag("gschoollink.png", class: "links-right"), "https://students.gschool.it/students/275") %>
+        <%= link_to(image_tag("twitterlink.png", class: "links-right"), "http://twitter.com/chaseterzian") %>
+        <%= link_to(image_tag("githublink.png", class: "links-right"),  "https://github.com/chaseterzian") %>
+        <%= link_to(image_tag("linkedinlink.jpg", class: "links-right"), "https://www.linkedin.com/in/chaseterzian") %>
+      </div>
+    </div>
+  </div>
 
 </div>
 </footer>
-
 
 </body>
 </html>
