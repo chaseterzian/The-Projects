@@ -22,13 +22,13 @@
 #    # membership.update_attribute(:project_id, 999102)
 #    # membership.update_attribute(:user_id, 999103)
 
-# 
+#
 # User.create(
-#   first_name: 'Admin',
-#   last_name: 'Jones',
-#   email: 'admin@example.com',
-#   password_digest: 'pp',
-#   admin: 'true')
+#    first_name: 'Admin',
+#    last_name: 'Jones',
+#    email: 'admin@example.com',
+#    password_digest: 'password',
+#    admin: 'true')
 
 #    # id: 999200)
 #    # user.update_attribute(:first_name, 'Chasen')

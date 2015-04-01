@@ -22,13 +22,13 @@
         </td>
 
         <td class="col-md-8">
-          <% if current_user.id == user.id %>
+          <% if current_user.id == user.id || current_user.admin == true %>
           <%= mail_to user.email %>
           <% end %>
         </td>
 
         <td class="col-md-1">
-          <% if current_user.id == user.id %>
+          <% if current_user.id == user.id || current_user.admin == true %>
           <%= link_to "Edit", edit_user_path(user) %>
           <% end %>
 

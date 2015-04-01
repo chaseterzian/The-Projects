@@ -3,6 +3,7 @@ class ProjectsController < PrivateController
   before_action :authenticate_user
   before_action :authorize_user_for_project, except: [:index, :new, :create]
   before_action :owner_permission, only: [:edit, :update, :destroy]
+  # before_action :set_admin
 
 
   def index

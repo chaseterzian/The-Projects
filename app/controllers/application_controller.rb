@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def user_role_is_owner
     @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
     # @project.memberships.find_by(user_id: current_user.id).role == "Owner"
@@ -38,21 +37,25 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  helper_method :current_user
+  helper_method :user_role_is_owner
+  helper_method :user_permission
+  helper_method :cant_update_last_owner
+
+  private
+
+  def set_admin
+    User.find(params[:id])
+  end
+
+end
+
   # def cant_update_last_owner
   #   if @project.memberships.where(role: "Owner").count == 1 && @project.memberships.find(
   #     flash[:warning] = "Projects must have at least one owner"
   #     redirect_to project_memberships_path(@project)
   #   end
   # end
-
-
-
-  helper_method :current_user
-  helper_method :user_role_is_owner
-  helper_method :user_permission
-  helper_method :cant_update_last_owner
-
-end
 #current_user.memberships.map(&:project_id).include?(project.id)
 #project.memberships.map(&:user_id).include?(current_user.id)
 

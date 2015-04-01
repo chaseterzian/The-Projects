@@ -23,9 +23,9 @@ class UsersController < PrivateController
   end
 
   def edit
-    @set_admin
-    @user = User.find(params[:id])
-    if current_user.id != @user.id
+      @user = User.find(params[:id])
+    if current_user.admin == true
+    elsif current_user.id != @user.id
       render file: "/Users/chaseterzian/workspace/07-gcamptesting/gcamp/public/nopage.html", layout: false, status: 404
     end
   end
@@ -60,9 +60,11 @@ class UsersController < PrivateController
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin)
   end
 
-  def set_admin
-    User.find(params[:id])
-  end
+  # def set_admin
+  #   User.find(params[:id])
+  # end
+
+
   # def render_404
   #   render file: "/Users/chaseterzian/workspace/07-gcamptesting/gcamp/public/404.html", layout: false, status: 404
   # end
