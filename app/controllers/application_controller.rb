@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def owner_permission
-    if @project.memberships.where(user_id: current_user.id).include?(role: "Owner") 
+    if @project.memberships.where(user_id: current_user.id).include?(role: "Owner")
     else
       flash[:warning] = "You do not have access"
       redirect_to project_path(@project)
@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :user_role_is_owner
-  helper_method :user_permission?
+  helper_method :user_permission
   helper_method :cant_update_last_owner
 
 end
