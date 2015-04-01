@@ -1,0 +1,7 @@
+current_user.projects.include?(@project) ||
+user.projects.include?(@project) ||
+current_user.memberships.include?(@project) ||
+user.memberships.include?(@project) |
+
+(current_user.projects(@project) &
+user.projects(@project)).any? %>

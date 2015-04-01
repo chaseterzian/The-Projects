@@ -22,7 +22,12 @@
         </td>
 
         <td class="col-md-8">
-          <% if current_user.id == user.id || current_user.admin == true %>
+          <% if current_user.id == user.id ||
+                current_user.admin == true ||
+                (current_user.projects(@project) &
+                user.projects(@project)).any? %>
+                
+
           <%= mail_to user.email %>
           <% end %>
         </td>

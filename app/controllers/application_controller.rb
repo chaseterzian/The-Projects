@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     else
       flash[:warning] = "You must sign in"
       redirect_to signin_path
+
     end
   end
 
