@@ -41,6 +41,13 @@
   </div>
 </div>
 
+<div class="form-group">
+  <%= f.label :pivitol_tracker_token, "Pivitol Tracker Token", class: "col-md-2 control-label"  %>
+  <div class="col-md-4">
+    <%= f.text_field :pivitol_tracker_token, class: "form-control" %>
+  </div>
+</div>
+
 <% if current_user.admin == true %>
 <div class ="form-group">
   <div class ="col-sm-offset-2 col-sm-10">

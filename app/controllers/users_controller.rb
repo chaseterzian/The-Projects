@@ -6,6 +6,8 @@ class UsersController < PrivateController
 
   def index
     @users = User.all
+    tracker_api = TrackerAPI.new
+    @tracker_projects = tracker_api.projects(current_user.pivitol_tracker_token)
   end
 
   def new
@@ -23,7 +25,7 @@ class UsersController < PrivateController
   end
 
   def edit
-      @user = User.find(params[:id])
+    @user = User.find(params[:id])
     if current_user.admin == true
     elsif current_user.id != @user.id
       render file: "#{Rails.root}/public/nopage.html", layout: false, status: 404
@@ -54,11 +56,22 @@ class UsersController < PrivateController
     end
   end
 
+
+  # def token_length(c)
+  #   return unless c
+  #   truncate(c, :length => 5)
+  # end
+
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin, :pivitol_tracker_token)
   end
+
+  # def token_length
+  #   string_arr = self.split(' ')
+  #   string_arr.count > 5 ? "#{string_arr[0..(limit-1)].join(' ')}..." : self
+  # end
 
   # def set_admin
   #   User.find(params[:id])

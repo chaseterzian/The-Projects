@@ -12,6 +12,8 @@ class ProjectsController < PrivateController
     else
       @projects = current_user.projects
     end
+    tracker_api = TrackerAPI.new
+    @tracker_projects = tracker_api.projects(current_user.pivitol_tracker_token)
   end
 
   def new
@@ -59,7 +61,7 @@ class ProjectsController < PrivateController
   private
 
   def project_params
-    params.require(:project).permit(:name, :project_id, :user_id, :role)
+    params.require(:project).permit(:name, :project_id, :user_id, :role, :pivitol_tracker_token)
   end
 
   def set_project_params

@@ -265,6 +265,7 @@ DEPENDENCIES
   capybara (~> 2.4.4)
   coffee-rails (~> 4.1.0)
   faker (~> 1.4.3)
+  faraday (~> 0.9.0)
   jbuilder (~> 2.0)
   jquery-rails
   launchy

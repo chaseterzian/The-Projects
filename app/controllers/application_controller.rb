@@ -32,12 +32,13 @@ class ApplicationController < ActionController::Base
 
   def owner_permission
     # if @project.memberships.where(user_id: current_user.id).include?(role: "Owner") || current_user.admin == true
-      if @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"] || current_user.admin == true
+    if @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"] || current_user.admin == true
     else
       flash[:warning] = "You do not have access"
       redirect_to project_path(@project)
     end
   end
+
 
   helper_method :current_user
   helper_method :user_role_is_owner
@@ -52,12 +53,16 @@ class ApplicationController < ActionController::Base
 
 end
 
-  # def cant_update_last_owner
-  #   if @project.memberships.where(role: "Owner").count == 1 && @project.memberships.find(
-  #     flash[:warning] = "Projects must have at least one owner"
-  #     redirect_to project_memberships_path(@project)
-  #   end
+  # def token_length
+  #   string_arr = self.split(' ')
+  #   string_arr.count > 5 ? "#{string_arr[0..(limit-1)].join(' ')}..." : self
   # end
+# def cant_update_last_owner
+#   if @project.memberships.where(role: "Owner").count == 1 && @project.memberships.find(
+#     flash[:warning] = "Projects must have at least one owner"
+#     redirect_to project_memberships_path(@project)
+#   end
+# end
 #current_user.memberships.map(&:project_id).include?(project.id)
 #project.memberships.map(&:user_id).include?(current_user.id)
 
@@ -65,11 +70,11 @@ end
 # no dice
 # unless current_user.projects.where(id: project.id).any?
 # also no dice
-  # def authorize_user_to_delete_membership
-  #   if current_user.project.memberships.include?(@membership)
-  #     flash[:message] = "TESTING MEMBERSHIP DELETE OF SELF"
-  #   end
-  # end
+# def authorize_user_to_delete_membership
+#   if current_user.project.memberships.include?(@membership)
+#     flash[:message] = "TESTING MEMBERSHIP DELETE OF SELF"
+#   end
+# end
 
 #rails render 404 files
 

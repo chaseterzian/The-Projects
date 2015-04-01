@@ -30,7 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker', '~> 1.4.3'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'faraday', '~> 0.9.0'
 # Use Capistrano for deployment
  gem 'capistrano-rails', group: :development
 
