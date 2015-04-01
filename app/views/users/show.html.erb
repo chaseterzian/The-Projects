@@ -21,8 +21,10 @@
     </div>
 
     <div class="dl-horizontal">
+      <% if current_user.id == @user.id %>
       <dt><%= "Email" %></dt>
       <dd><%= mail_to @user.email %></dd>
+      <% end %>
     </div>
 
     <% end %>

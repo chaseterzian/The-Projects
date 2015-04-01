@@ -22,7 +22,9 @@
         </td>
 
         <td class="col-md-8">
+          <% if current_user.id == user.id %>
           <%= mail_to user.email %>
+          <% end %>
         </td>
 
         <td class="col-md-1">
