@@ -22,7 +22,7 @@
 
     <p></p>
 
-  <% if user_role_is_owner || current_user == true %>
+  <% if user_role_is_owner || current_user.admin == true %>
     <div class="form-group">
       <div class="well">
         <h3>Delete</h3>

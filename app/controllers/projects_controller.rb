@@ -3,11 +3,15 @@ class ProjectsController < PrivateController
   before_action :authenticate_user
   before_action :authorize_user_for_project, except: [:index, :new, :create]
   before_action :owner_permission, only: [:edit, :update, :destroy]
-  # before_action :set_admin
+  # before_action :admin
 
 
   def index
-    @projects = current_user.projects
+    if current_user.admin == true
+      @projects = Project.all  #come backkkkkkkkkkkkk
+    else
+      @projects = current_user.projects
+    end
   end
 
   def new
@@ -52,16 +56,18 @@ class ProjectsController < PrivateController
     end
   end
 
-
   private
-
 
   def project_params
     params.require(:project).permit(:name, :project_id, :user_id, :role)
   end
 
-
   def set_project_params
     @project = Project.find(params[:id])
   end
 end
+  # def admin
+  #   if current_user.admin == true
+  #     @projects = Project.all
+  #   end
+  # end
