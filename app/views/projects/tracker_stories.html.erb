@@ -1,14 +1,15 @@
 <div class="container">
   <div class="page-header">
-    <% @count = 100 %>
+    <% @count = 89 %>
 
-    <%= "(showing first #{@count})" %>
-    <h1><%= "Stories for #{@project_name}" %></h1>
+    <div class="pull-right">
+      <%= "(showing first #{@count})" %>
+    </div>
+    <h1> <%= "Stories for" %> <%= @tracker_projects[0][:name] %></h1>
     <hr>
 
 
-
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th class="col-md-6">Story</th>
@@ -18,33 +19,38 @@
         </tr>
       </thead>
 
-      <% if current_user.pivitol_tracker_token != nil %>
-      <% @tracker_stories.each_with_index do |story, count| %>
-      <% break if count == @count %>
       <tbody>
+        <% if current_user.pivitol_tracker_token != nil %>
+        <% @tracker_stories.each_with_index do |story, count| %>
+        <% break if count == @count %>
         <tr>
           <td class="col-md-6">
             <%= link_to story[:name], story[:url] %>
           </td>
 
           <td class="col-md-2">
-            <%  %>
+            <% if story[:story_type] == "chore" %>
+            <%=  %>
+            <% end %>
+
+            <% if story[:story_type] == "feature" %>
+            <%= 1 %>
+            <% end %>
           </td>
 
           <td class="col-md-2">
-            <%=  %>
+            <% story[:labels].each do |labels| %>
+            <%= labels[:name] %>,
+            <% end %>
           </td>
 
           <td class="col-md-2">
             <%= story[:current_state] %>
           </td>
         </tr>
+        <% end %>
+        <% end %>
       </tbody>
-      <% end %>
-      <% end %>
 
     </table>
-
-
   </div>
-</div>

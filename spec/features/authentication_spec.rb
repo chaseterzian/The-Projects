@@ -6,7 +6,6 @@ feature 'Existing user sign-in' do
 
 
     create_user
-
     visit root_path
     expect(page).to have_link 'gCamp'
     expect(page).to have_link 'Sign In'

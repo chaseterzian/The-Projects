@@ -1,5 +1,5 @@
 def create_user
-  user = User.create! first_name: 'Chase', last_name: 'Gnar', email: 'chasegnar@gmail.com', password: 'pp', password_confirmation: 'pp'
+  user = User.create!(first_name: 'Chase', last_name: 'Gnar', email: 'chasegnar@gmail.com', password: 'pp', password_confirmation: 'pp', admin: true)
 end
 
 def login
@@ -38,4 +38,22 @@ def create_task
   task = Task.create!(
   description: 'Test Task'
   )
+end
+
+def create_user2(options = {})
+  User.create!({
+    first_name: 'Billy',
+    last_name: 'Bobby',
+    email: "billy#{rand(10000)+1}@bobby.com",
+    password: 'password',
+    admin: false
+  }.merge(options))
+end
+
+def create_membership(project, user, options = {})
+  Membership.create!({
+    user_id: user.id,
+    project_id: project.id,
+    role: 'Member'
+  }.merge(options))
 end

@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   get '/sign-in' => 'authentication#new', as: :signin
   post '/sign-in' => 'authentication#create'
   get '/sign-out' => 'authentication#destroy', as: :signout
-  get '/tracker_stories' => 'projects#tracker_stories'
 
   #get "/tasks" => "tasks#tasks"
   # resources :tracker_stories, only: [:show, :index]
 
 
+  get '/tracker_stories/:project_id' => 'projects#tracker_stories', as: :tracker_stories
   # resources :tracker_stories, only: [:index, :show]
   resources :users
   resources :projects do

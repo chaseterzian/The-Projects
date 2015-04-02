@@ -17,7 +17,9 @@ class ProjectsController < PrivateController
 
   def tracker_stories
     if current_user.pivitol_tracker_token != nil
-      @tracker_stories = TrackerAPI.new.stories(current_user.pivitol_tracker_token)
+      @tracker_stories = TrackerAPI.new.stories(current_user.pivitol_tracker_token, params[:project_id])
+
+      @tracker_projects = TrackerAPI.new.projects(current_user.pivitol_tracker_token)
     end
   end
 

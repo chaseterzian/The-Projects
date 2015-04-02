@@ -46,7 +46,7 @@
       <% @tracker_projects.each do |project| %>
       <tr>
         <td class="col-md-6">
-          <%= link_to project[:name], tracker_stories_path(project) %>
+          <%= link_to project[:name], tracker_stories_path(project[:id]) %>
         </td>
 
         <td class="col-md-5">
