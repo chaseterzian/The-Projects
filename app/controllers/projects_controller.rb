@@ -3,17 +3,22 @@ class ProjectsController < PrivateController
   before_action :authenticate_user
   before_action :authorize_user_for_project, except: [:index, :new, :create]
   before_action :owner_permission, only: [:edit, :update, :destroy]
-  # before_action :admin
-
 
   def index
     if current_user.admin == true
-      @projects = Project.all  #come backkkkkkkkkkkkk
+      @projects = Project.all
     else
       @projects = current_user.projects
     end
-    tracker_api = TrackerAPI.new
-    @tracker_projects = tracker_api.projects(current_user.pivitol_tracker_token)
+    if current_user.pivitol_tracker_token != nil
+      @tracker_projects = TrackerAPI.new.projects(current_user.pivitol_tracker_token)
+    end
+  end
+
+  def tracker_stories
+    if current_user.pivitol_tracker_token != nil
+      @tracker_stories = TrackerAPI.new.stories(current_user.pivitol_tracker_token)
+    end
   end
 
   def new
@@ -68,8 +73,8 @@ class ProjectsController < PrivateController
     @project = Project.find(params[:id])
   end
 end
-  # def admin
-  #   if current_user.admin == true
-  #     @projects = Project.all
-  #   end
-  # end
+# def admin
+#   if current_user.admin == true
+#     @projects = Project.all
+#   end
+# end

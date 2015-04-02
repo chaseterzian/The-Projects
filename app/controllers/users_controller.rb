@@ -6,8 +6,10 @@ class UsersController < PrivateController
 
   def index
     @users = User.all
-    tracker_api = TrackerAPI.new
-    @tracker_projects = tracker_api.projects(current_user.pivitol_tracker_token)
+    if current_user.pivitol_tracker_token != nil
+      tracker_api = TrackerAPI.new
+      @tracker_projects = tracker_api.projects(current_user.pivitol_tracker_token)
+    end
   end
 
   def new

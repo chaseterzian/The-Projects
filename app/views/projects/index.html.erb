@@ -5,25 +5,6 @@
     <h1>Projects</h1>
     <hr>
 
-
-
-
-
-    
-    <% @tracker_projects.each do |project| %>
-    <%= project %>
-    <% end %>
-
-
-
-
-
-
-
-
-
-
-
     <table class="table">
       <thead>
         <tr>
@@ -32,7 +13,6 @@
           <th class="col-md-1"></th>
         </tr>
       </thead>
-
 
       <% @projects.each do |project| %>
       <tr>
@@ -47,7 +27,35 @@
         <td class="col-md-1">
         </td>
       </tr>
+      <% end %>
+    </table>
 
+
+    <h1>Pivital Tracker Projects</h1>
+    <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-md-3">Name</th>
+          <th class="col-md-8"></th>
+          <th class="col-md-1"></th>
+        </tr>
+      </thead>
+
+      <% if current_user.pivitol_tracker_token != nil %>
+      <% @tracker_projects.each do |project| %>
+      <tr>
+        <td class="col-md-6">
+          <%= link_to project[:name], tracker_stories_path(project) %>
+        </td>
+
+        <td class="col-md-5">
+        </td>
+
+        <td class="col-md-1">
+        </td>
+      </tr>
+      <% end %>
       <% end %>
 
     </table>
