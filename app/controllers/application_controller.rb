@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+
   def authenticate_user
     if current_user.present?
     else
@@ -45,7 +46,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_permission
   helper_method :cant_update_last_owner
 
-  private
+
 
   def set_admin
     User.find(params[:id])
