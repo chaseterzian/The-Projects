@@ -39,9 +39,7 @@
           </td>
 
           <td class="col-md-2">
-            <% story[:labels].each do |labels| %>
-            <%= labels[:name] %>,
-            <% end %>
+            <%= story[:labels].map { |labels| labels[:name] }.join(', ') %>
           </td>
 
           <td class="col-md-2">
