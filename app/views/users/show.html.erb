@@ -29,11 +29,12 @@
 
     <div class="dl-horizontal">
       <dt>Pivotal Tracker Token</dt>
+      <% if @user.pivitol_tracker_token != nil %>
       <dd><%= "#{@user.pivitol_tracker_token}"[0..3] + "****************************" %></dd>
     </div>
-
+    <% end %>
     <% end %>
 
-
+    <br>
   </div>
 </div>
