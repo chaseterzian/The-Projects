@@ -1,13 +1,11 @@
 <div class="container">
   <div class="page-header">
-    <% @count = 10 %>
+    <% @count = 100 %>
 
-
-  <h1><%= "Stories for #{@tracker_projects}" %></h1>
-  <%= "(showing first #{@count})" %>
-
-
+    <%= "(showing first #{@count})" %>
+    <h1><%= "Stories for #{@project_name}" %></h1>
     <hr>
+
 
 
     <table class="table">
@@ -23,20 +21,25 @@
       <% if current_user.pivitol_tracker_token != nil %>
       <% @tracker_stories.each_with_index do |story, count| %>
       <% break if count == @count %>
-      <tr>
-        <td class="col-md-6">
-          <%= link_to story[:name], story[:url] %>
-        </td>
+      <tbody>
+        <tr>
+          <td class="col-md-6">
+            <%= link_to story[:name], story[:url] %>
+          </td>
 
-        <td class="col-md-2">
-        </td>
+          <td class="col-md-2">
+            <%  %>
+          </td>
 
-        <td class="col-md-2">
-        </td>
+          <td class="col-md-2">
+            <%=  %>
+          </td>
 
-        <td class="col-md-2">
-        </td>
-      </tr>
+          <td class="col-md-2">
+            <%= story[:current_state] %>
+          </td>
+        </tr>
+      </tbody>
       <% end %>
       <% end %>
 
