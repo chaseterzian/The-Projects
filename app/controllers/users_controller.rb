@@ -67,7 +67,11 @@ class UsersController < PrivateController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin, :pivitol_tracker_token)
+    if current_user.admin
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin, :pivitol_tracker_token)
+    else
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :pivitol_tracker_token)
+    end
   end
 
   # def token_length
