@@ -19,6 +19,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def ensure_admin_owner_or_self
+    if !(current_user.admin_owner?(@project) || current_user.id == @membership.user_id)
+      flash[:warning] = 'You do not have access'
+      redirect_to projects_path
+    end
+  end
+
   def authorize_user_for_project
     unless current_user.projects.include?(@project) || current_user.admin == true
       flash[:warning] = "You do not have access to that project"
@@ -27,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_role_is_owner
-    @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"] || current_user.admin == true
+     current_user.admin || @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
     # @project.memberships.find_by(user_id: current_user.id).role == "Owner"
   end
 
@@ -58,12 +65,7 @@ end
   #   string_arr = self.split(' ')
   #   string_arr.count > 5 ? "#{string_arr[0..(limit-1)].join(' ')}..." : self
   # end
-# def cant_update_last_owner
-#   if @project.memberships.where(role: "Owner").count == 1 && @project.memberships.find(
-#     flash[:warning] = "Projects must have at least one owner"
-#     redirect_to project_memberships_path(@project)
-#   end
-# end
+
 #current_user.memberships.map(&:project_id).include?(project.id)
 #project.memberships.map(&:user_id).include?(current_user.id)
 

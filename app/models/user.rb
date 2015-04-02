@@ -13,6 +13,15 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def admin_owner?(project)
+    self.admin || self.memberships.find_by(project_id: project.id).role == 'Owner'
+  end
+
+  def admin_member?(project)
+    self.admin || self.memberships.find_by(project_id: project.id) != nil
+  end
+
+
   has_secure_password
 
 end

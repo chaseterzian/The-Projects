@@ -10,7 +10,11 @@ class TrackerAPI
       req.headers['Content-Type'] = 'application/json'
       req.headers['X-TrackerToken'] = token
     end
-    JSON.parse(response.body, symbolize_names: true)
+    if response.status == 403
+      false
+    else
+      JSON.parse(response.body, symbolize_names: true)
+    end
   end
 
   def stories(token, project_id)
@@ -21,4 +25,5 @@ class TrackerAPI
     end
     JSON.parse(response.body, symbolize_names: true)
   end
+
 end

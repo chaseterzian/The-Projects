@@ -7,9 +7,6 @@
     <h1> <%= @user.first_name + " " + @user.last_name %> </h1>
     <hr>
 
-    <%= form_for @user, html: { class: "form-horizontal" } do |f| %>
-
-
     <div class="dl-horizontal">
       <dt>First Name</dt>
       <dd><%= @user.first_name %></dd>
@@ -30,10 +27,9 @@
     <div class="dl-horizontal">
       <dt>Pivotal Tracker Token</dt>
       <% if @user.pivitol_tracker_token != nil %>
-      <dd><%= "#{@user.pivitol_tracker_token}"[0..3] + "****************************" %></dd>
+        <dd><%= "#{@user.pivitol_tracker_token}"[0..3] + "****************************" %></dd>
+      <% end %>
     </div>
-    <% end %>
-    <% end %>
 
     <br>
   </div>

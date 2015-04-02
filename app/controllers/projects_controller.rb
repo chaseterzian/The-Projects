@@ -10,9 +10,15 @@ class ProjectsController < PrivateController
     else
       @projects = current_user.projects
     end
-    if current_user.pivitol_tracker_token != nil
-      @tracker_projects = TrackerAPI.new.projects(current_user.pivitol_tracker_token)
-    end
+    if current_user.pivitol_tracker_token
+      tracker_token = TrackerAPI.new
+     if tracker_token.projects(current_user.pivitol_tracker_token)
+       @tracker_projects = tracker_token.projects(current_user.pivitol_tracker_token)
+     else
+       flash[:warning] = 'Invalid Token'
+       @tracker_projects = []
+     end
+   end
   end
 
   def tracker_stories
