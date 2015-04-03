@@ -1,8 +1,9 @@
- class ProjectsController < PrivateController
+class ProjectsController < PrivateController
   before_action :set_project_params, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
   before_action :authorize_user_for_project, except: [:index, :new, :create, :tracker_stories]
   before_action :owner_permission, only: [:edit, :update, :destroy]
+
 
   def index
     if current_user.admin == true
@@ -12,13 +13,13 @@
     end
     if current_user.pivitol_tracker_token
       tracker_token = TrackerAPI.new
-     if tracker_token.projects(current_user.pivitol_tracker_token)
-       @tracker_projects = tracker_token.projects(current_user.pivitol_tracker_token)
-     else
-       flash[:warning] = 'Invalid Token'
-       @tracker_projects = []
-     end
-   end
+      if tracker_token.projects(current_user.pivitol_tracker_token)
+        @tracker_projects = tracker_token.projects(current_user.pivitol_tracker_token)
+      else
+        flash[:warning] = 'Invalid Token'
+        @tracker_projects = []
+      end
+    end
   end
 
   def tracker_stories
@@ -45,12 +46,6 @@
     else
       render :new
     end
-  end
-
-  def edit
-  end
-
-  def show
   end
 
   def update
@@ -80,9 +75,7 @@
   def set_project_params
     @project = Project.find(params[:id])
   end
+  
+
+
 end
-# def admin
-#   if current_user.admin == true
-#     @projects = Project.all
-#   end
-# end

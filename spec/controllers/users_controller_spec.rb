@@ -30,7 +30,7 @@ describe UsersController do
       expect(response).to redirect_to sign_in_path
     end
   end
-  
+
 
   describe 'DELETE #destroy' do
     it 'should not allow a non-admin to delete another user' do

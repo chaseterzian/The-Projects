@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_role_is_owner
-     current_user.admin || @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
+    current_user.admin || @project.memberships.where(user_id: current_user.id).pluck(:role) == ["Owner"]
     # @project.memberships.find_by(user_id: current_user.id).role == "Owner"
   end
 
@@ -48,23 +48,20 @@ class ApplicationController < ActionController::Base
   end
 
 
-  helper_method :current_user
-  helper_method :user_role_is_owner
-  helper_method :user_permission
-  helper_method :cant_update_last_owner
-
-
-
   def set_admin
     User.find(params[:id])
   end
 
 end
 
-  # def token_length
-  #   string_arr = self.split(' ')
-  #   string_arr.count > 5 ? "#{string_arr[0..(limit-1)].join(' ')}..." : self
-  # end
+helper_method :current_user
+helper_method :user_role_is_owner
+helper_method :user_permission
+helper_method :cant_update_last_owner
+# def token_length
+#   string_arr = self.split(' ')
+#   string_arr.count > 5 ? "#{string_arr[0..(limit-1)].join(' ')}..." : self
+# end
 
 #current_user.memberships.map(&:project_id).include?(project.id)
 #project.memberships.map(&:user_id).include?(current_user.id)
