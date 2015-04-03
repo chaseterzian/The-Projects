@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 
 feature 'User can create an account' do

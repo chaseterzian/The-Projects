@@ -14,7 +14,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker', '~> 1.4.3'
 gem 'faraday', '~> 0.9.0'
 gem 'capistrano-rails', group: :development
-gem "codeclimate-test-reporter", group: :test, require: nil
 group :development, :test do
   gem 'travis'
   gem 'capybara', '~> 2.4.4'

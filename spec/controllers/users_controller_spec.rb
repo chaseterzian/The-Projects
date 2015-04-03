@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'rails_helper'
+
 
 describe UsersController do
   let(:admin) { create_user2(admin: true) }
