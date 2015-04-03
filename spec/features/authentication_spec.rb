@@ -24,9 +24,6 @@ feature 'Existing user sign-in' do
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to_not have_link 'Tasks'
-      expect(page).to_not have_link 'Users'
-      expect(page).to_not have_link 'Projects'
     end
 
     click_button 'Sign In'
@@ -35,22 +32,23 @@ feature 'Existing user sign-in' do
     login
     click_button 'Sign In'
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq projects_path
     expect(page).to have_content 'You have successfully signed in'
 
     expect(page).to have_link 'gCamp'
     expect(page).to have_link 'Chase Gnar'
     expect(page).to have_link 'Sign Out'
-    expect(page).to_not have_link 'Sign Up'
-    expect(page).to_not have_link 'Sign In'
+    within('.navbar') do
+      expect(page).to have_link 'Projects'
+      expect(page).to have_link 'Users'
+    end
+
 
     within("footer") do
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Users'
-      expect(page).to have_link 'Projects'
-      expect(page).to_not have_link 'Tasks'
+      expect(page).to have_link 'Home'
     end
 
   end

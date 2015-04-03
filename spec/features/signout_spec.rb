@@ -9,7 +9,7 @@ feature 'User can sign out, is redirected to root-path, and no longer has access
     visit signin_path
     login
     click_button 'Sign In'
-    expect(current_path).to eq root_path
+    expect(current_path).to eq projects_path
 
 
     expect(page).to have_link 'gCamp'
@@ -20,9 +20,7 @@ feature 'User can sign out, is redirected to root-path, and no longer has access
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Users'
-      expect(page).to have_link 'Projects'
-      expect(page).to_not have_link 'Tasks'
+      expect(page).to have_link 'Home'
     end
 
     expect(page).to have_link 'gCamp'

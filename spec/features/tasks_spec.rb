@@ -12,6 +12,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
     click_link 'Projects'
     click_link 'Existing Project'
     click_link '0 Tasks'
+
     expect(current_path).to eq (project_tasks_path(project))
 
     expect(page).to have_link 'gCamp'
@@ -28,9 +29,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Users'
-      expect(page).to have_link 'Projects'
-      expect(page).to_not have_link 'Tasks'
+      expect(page).to have_link 'Home'
     end
 
     expect(page).to have_content 'Tasks for Existing Project'          #header
@@ -74,9 +73,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Users'
-      expect(page).to have_link 'Projects'
-      expect(page).to_not have_link 'Tasks'
+      expect(page).to have_link 'Home'
     end
 
     within("ol.breadcrumb") do
@@ -133,9 +130,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Users'
-      expect(page).to have_link 'Projects'
-      expect(page).to_not have_link 'Tasks'
+      expect(page).to have_link 'Home'
     end
 
     within('ol.breadcrumb') do
@@ -180,9 +175,7 @@ feature 'Once signed in, user can see, edit, make, and destroy tasks with proper
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Users'
-      expect(page).to have_link 'Projects'
-      expect(page).to_not have_link 'Tasks'
+      expect(page).to have_link 'Home'
     end
 
     within('ol.breadcrumb') do

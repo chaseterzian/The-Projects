@@ -21,9 +21,7 @@ feature 'User can Create, Read, Update and Delete Users with flash messages' do
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Users'
-      expect(page).to have_link 'Projects'
-      expect(page).to_not have_link 'Tasks'
+      expect(page).to have_link 'Home'
     end
 
     expect(page).to have_content 'Users'
@@ -61,9 +59,7 @@ feature 'User can Create, Read, Update and Delete Users with flash messages' do
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Users'
-      expect(page).to have_link 'Projects'
-      expect(page).to_not have_link 'Tasks'
+      expect(page).to have_link 'Home'
     end
 
 
@@ -119,9 +115,7 @@ feature 'User can Create, Read, Update and Delete Users with flash messages' do
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Users'
-      expect(page).to have_link 'Projects'
-      expect(page).to_not have_link 'Tasks'
+      expect(page).to have_link 'Home'
     end
 
 
@@ -167,9 +161,7 @@ feature 'User can Create, Read, Update and Delete Users with flash messages' do
       expect(page).to have_link 'About'
       expect(page).to have_link 'Terms'
       expect(page).to have_link 'FAQ'
-      expect(page).to have_link 'Users'
-      expect(page).to have_link 'Projects'
-      expect(page).to_not have_link 'Tasks'
+      expect(page).to have_link 'Home'
     end
 
 
