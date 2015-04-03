@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 
 feature 'User can sign out, is redirected to root-path, and no longer has access to tasks, users, or projects - flash present' do

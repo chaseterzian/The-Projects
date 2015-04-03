@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 describe MembershipsController do
   let(:admin) { create_user2(admin: true) }

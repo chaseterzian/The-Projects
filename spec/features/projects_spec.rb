@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 feature 'User can Create, Read, Update and Delete Projects with flash messages.' do
 

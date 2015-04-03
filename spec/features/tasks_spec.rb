@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 
 feature 'Once signed in, user can see, edit, make, and destroy tasks with proper redirects and errors' do

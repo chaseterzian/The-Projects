@@ -1,5 +1,4 @@
-require 'rails_helper'
-
+require 'spec_helper'
 
 feature 'User can Create, Read, Update and Delete Users with flash messages' do
   scenario 'Test User-Index page content, links redirects, and funtionality' do
