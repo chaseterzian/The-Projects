@@ -29,25 +29,25 @@ describe ProjectsController do
       get :show, id: project.id
       expect(response).to redirect_to sign_in_path
     end
-    # it 'should redirect a non member to projects path' do
-    #   project = create_project
-    #   user = create_user2
-    #   session[:user_id] = user.id
-    #   membership = create_membership(project, create_user, role: 'Member')
-    #
-    #   get :show, id: project.id
-    #
-    #   expect(response).to redirect_to projects_path
-    # end
+    it 'should redirect a non member to projects path' do
+      project = create_project
+      user = create_user2
+      session[:user_id] = user.id
+      membership = create_membership(project, create_user, role: 'Member')
 
-  #   it 'should render the show for a member' do
-  #     membership = create_membership(project, member)
-  #     session[:user_id] = member.id
-  #
-  #     get :show, id: project.id
-  #
-  #     expect(response).to render_template :show
-  #   end
+      get :show, id: project.id
+
+      expect(response).to redirect_to projects_path
+    end
+
+      # it 'should render the show for a member' do
+      #   membership = create_membership(project, member)
+      #   session[:user_id] = member.id
+      #
+      #   get :show, id: project.id
+      #
+      #   expect(response).to render_template :show
+      # end
   end
 
   describe 'PATCH #update' do
@@ -63,15 +63,18 @@ describe ProjectsController do
   end
 
 
-  #
-  # describe 'DELETE #destroy' do
-  #   it 'should redirect a member to projects path' do
-  #
-  #     delete :destroy, id: project.id
-  #     expect(response).to redirect_to projects_path
-  #
-  #   end
-  # end
+
+  describe 'DELETE #destroy' do
+    it 'should not allow a non member to destroy' do
+      session[:user_id] = member.id
+
+      delete :destroy, id: project.id
+
+      expect(response).to redirect_to projects_path
+      expect(flash[:warning]).to eq("You do not have access to that project")
+
+    end
+  end
 
 
 end

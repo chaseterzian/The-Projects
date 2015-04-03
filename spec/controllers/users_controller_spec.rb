@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe UsersController do
   let(:admin) { create_user2(admin: true) }
+  let(:user) { create_user2(email: "whatever@example.com") }
   let(:non_member) { create_user2 }
   let(:project) { create_project }
   let(:member) {create_user2}
@@ -24,23 +25,23 @@ describe UsersController do
   end
 
   describe 'GET #show' do
-    it 'should redirect a visotor to sign in path' do
-      project = create_project
-      get :show, id: project.id
+    it 'should redirect a visitor to sign in path' do
+      get :show, id: user.id
       expect(response).to redirect_to sign_in_path
     end
   end
+  
 
-  # it 'should redirect a non member to user show' do
-  #   project = create_project
-  #   user = create_user2
-  #   session[:user_id] = user.id
-  #   membership = create_membership(project, create_user, role: 'Member')
-  #
-  #   get :show, id: user.id
-  #
-  #   expect(response).to redirect_to user_path(user_id)
-  # end
+  describe 'DELETE #destroy' do
+    it 'should not allow a non-admin to delete another user' do
+      session[:user_id] = member.id
+
+      delete :destroy, id: user.id
+
+      expect(response).to redirect_to users_path
+    end
+  end
+
 
 
 

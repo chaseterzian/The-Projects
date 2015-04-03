@@ -56,25 +56,25 @@ def create_task
   )
 end
 
-# def create_user2(options = {})
-#   User.create!({
-#     first_name: 'Billy',
-#     last_name: 'Bobby',
-#     email: "billy#{rand(10000)+1}@bobby.com",
-#     password: 'password',
-#     admin: false
-#   }.merge(options))
-# end
-
-
-def create_user2
-  user = User.create!(
+def create_user2(options = {})
+  User.create!({
     first_name: 'Billy',
     last_name: 'Bobby',
     email: "billy#{rand(10000)+1}@bobby.com",
     password: 'password',
-    admin: false)
+    admin: false
+  }.merge(options))
 end
+
+
+# def create_user2
+#   user = User.create!(
+#     first_name: 'Billy',
+#     last_name: 'Bobby',
+#     email: "billy#{rand(10000)+1}@bobby.com",
+#     password: 'password',
+#     admin: false)
+# end
 
 
 # def create_membership(options = {})
@@ -85,15 +85,14 @@ end
 #   }.merge(options))
 # end
 
-def create_membership(user, project)
-  member = Membership.create!(
+def create_membership(user, project, options = {})
+  member = Membership.create!({
     user_id: user.id,
     project_id: project.id,
-    role: 'Member')
+    role: 'Member'}.merge(options))
 end
 
 def create_project1
-
   Project.create!(name: 'Existing Project')
 end
 
