@@ -75,7 +75,7 @@ class ProjectsController < PrivateController
   def set_project_params
     @project = Project.find(params[:id])
   end
-  
+
 
 
 end

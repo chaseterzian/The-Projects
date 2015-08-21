@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>gCamp</title>
+  <title>The Projects</title>
   <%= stylesheet_link_tag    'application', media: 'all',
   'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -13,11 +13,11 @@
     <div class="container">
 
       <% if !current_user %>
-      <%= link_to "gCamp", root_path, class: "navbar-brand" %>
+      <%= link_to "The Projects", root_path, class: "navbar-brand" %>
       <% end %>
 
       <% if current_user %>
-      <%= link_to "gCamp", root_path, class: "navbar-brand" %>
+      <%= link_to "The Projects", root_path, class: "navbar-brand" %>
       <%= link_to "Sign Out", signout_path, class: "navbar-brand navbar-right" %>
       <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user), class: "navbar-brand navbar-right" %></li>
       <% else %>
@@ -67,7 +67,6 @@
       </div>
 
       <div class="col-md-4 container-fluid">
-        <%= link_to(image_tag("gschoollink.png", class: "links-right"), "https://students.gschool.it/students/275") %>
         <%= link_to(image_tag("twitterlink.png", class: "links-right"), "http://twitter.com/chaseterzian") %>
         <%= link_to(image_tag("githublink.png", class: "links-right"),  "https://github.com/chaseterzian") %>
         <%= link_to(image_tag("linkedinlink.jpg", class: "links-right"), "https://www.linkedin.com/in/chaseterzian") %>

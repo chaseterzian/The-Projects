@@ -1,0 +1,142 @@
+/*body {
+
+}
+
+img {
+max-width: 50%;
+}
+
+*, *:before, *:after {
+box-sizing: border-box;
+}
+
+body {
+color: #222;
+font-family: sans-serif;
+}
+
+div {
+color: #7BBADE;
+background: #222;
+border-left: 1px solid white;
+padding: 5px;
+}
+
+h2 {
+font-size: 40px;
+text-align: center;
+}
+
+h3 {
+text-align: center;
+color: #93DE7F;
+border-bottom: 1px solid #93DE7F;
+padding: 5px;
+background: #222;
+}*/
+
+/*Code Under This Line*/
+
+/*.columns:before,
+.columns:after {
+  content:"";
+  display:table;
+}
+.columns:after {
+  clear:both;
+}
+.columns {
+  zoom:1;
+  overflow: hidden;
+}
+
+.column {
+  float: left;
+}
+
+.two.columns .column, .column-two {
+  width: 50%;
+}
+
+.columns.three .column, .column-three {
+  width: 33.33333%;
+}
+
+.four.columns .column, .column.column-four {
+  width: 25%;
+}*/
+
+
+/* CODE UNDER THIS LINE */
+
+.col-1-var(){
+  width: 8.33%;
+  height: var()px;
+  float: left;
+}
+
+.col-1{
+  width: 8.33%;
+  float: left;
+}
+
+.col-2{
+  width: 16.66%;
+  float: left;
+}
+
+.col-3{
+  width: 25%;
+  float: left;
+}
+
+.col-4{
+  /*width: 33.33%;*/
+  width: 32.5%;
+  float: left;
+  margin: 2px;
+}
+
+.col-5{
+  width: 41.66%;
+  float: left;
+}
+
+.col-6{
+  width: 50.00%;
+  float: left;
+}
+
+.col-7{
+  width: 58.33%;
+  float: left;
+}
+
+.col-8{
+  width: 66.66%;
+  float: left;
+}
+
+.col-9{
+  width: 75.00%;
+  float: left;
+}
+
+.col-10{
+  width: 83.33%;
+  float: left;
+}
+
+.col-11{
+  width: 91.66%;
+  float: left;
+}
+
+.col-12{
+  width: 100.00%;
+  float: left;
+}
+
+.500{
+  height: 500px;
+}

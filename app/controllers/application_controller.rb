@@ -52,12 +52,15 @@ class ApplicationController < ActionController::Base
     User.find(params[:id])
   end
 
-end
 
 helper_method :current_user
 helper_method :user_role_is_owner
 helper_method :user_permission
 helper_method :cant_update_last_owner
+
+end
+
+
 # def token_length
 #   string_arr = self.split(' ')
 #   string_arr.count > 5 ? "#{string_arr[0..(limit-1)].join(' ')}..." : self
