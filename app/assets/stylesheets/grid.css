@@ -69,13 +69,13 @@ background: #222;
 
 /* CODE UNDER THIS LINE */
 
-.col-1-var(){
+/*.col-1-var(){
   width: 8.33%;
   height: var()px;
   float: left;
-}
+}*/
 
-.col-1{
+/*.col-1{
   width: 8.33%;
   float: left;
 }
@@ -91,13 +91,13 @@ background: #222;
 }
 
 .col-4{
-  /*width: 33.33%;*/
+  width: 33.33%;
   width: 32.5%;
   float: left;
   margin: 2px;
-}
+}*/
 
-.col-5{
+/*.col-5{
   width: 41.66%;
   float: left;
 }
@@ -130,13 +130,13 @@ background: #222;
 .col-11{
   width: 91.66%;
   float: left;
-}
+}*/
 
-.col-12{
+/*.col-12{
   width: 100.00%;
   float: left;
 }
 
 .500{
   height: 500px;
-}
+}*/
