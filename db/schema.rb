@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150401193932) do
     t.datetime "updated_at",  null: false
     t.boolean  "complete"
     t.date     "due_date"
+    t.integer  "project_id"
   end
 
   create_table "users", force: :cascade do |t|
