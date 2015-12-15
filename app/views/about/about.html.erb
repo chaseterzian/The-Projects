@@ -17,14 +17,17 @@
       </div>
     </div>
 
-    <h4>The Projects is extremely active. Check out our killer stats below!</h4>
-    <h4>
-      <%= "#{pluralize(Project.count, "Project")}, " %>
-      <%= "#{pluralize(Task.count, "Task")}, " %>
-      <%= "#{pluralize(Membership.count, "Project Member")}, " %>
-      <%= "#{pluralize(User.count, "User")}, " %>
-      <%= "#{pluralize(Comment.count, "Comment")}" %>
-    </h4>
+    <h4>Welcome to The Projects!</h4>
+    <p>
+          <div class="font12">
+            Community Stats:
+            <%= "#{pluralize(Project.count, "Project")}, " %>
+            <%= "#{pluralize(Task.count, "Task")}, " %>
+            <%= "#{pluralize(Membership.count, "Project Member")}, " %>
+            <%= "#{pluralize(User.count, "User")}, " %>
+            <%= "#{pluralize(Comment.count, "Comment")}" %>
+          </div>
+        <p>
 
   </div>
 </div>

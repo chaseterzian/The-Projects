@@ -1,4 +1,14 @@
 <div class="container">
+        <p>
+          <div class="font12">
+            Community Stats:
+            <%= "#{pluralize(Project.count, "Project")}, " %>
+            <%= "#{pluralize(Task.count, "Task")}, " %>
+            <%= "#{pluralize(Membership.count, "Project Member")}, " %>
+            <%= "#{pluralize(User.count, "User")}, " %>
+            <%= "#{pluralize(Comment.count, "Comment")}" %>
+          </div>
+        <p>
   <div class="page-header">
 
     <%= link_to "New Project", new_project_path, class: "btn btn-info pull-right" %>
@@ -59,5 +69,8 @@
       <% end %>
 
     </table>
+
   </div>
 </div>
+
+

@@ -11,6 +11,16 @@
           <%= form_tag signin_path do %>
 
           <h3><strong>Sign into The Projects</strong></h3>
+          <p>
+          <div class="font10">
+          Current Stats:
+          <%= "#{pluralize(Project.count, "Project")}, " %>
+          <%= "#{pluralize(Task.count, "Task")}, " %>
+          <%= "#{pluralize(Membership.count, "Project Member")}, " %>
+          <%= "#{pluralize(User.count, "User")}, " %>
+          <%= "#{pluralize(Comment.count, "Comment")}" %>
+          </div>
+          <p>
           <hr>
           <% if @error_message.present? %>
             <div class="text-danger">
@@ -41,6 +51,8 @@
             </div>
 
           <% end %>
+          
+
         </div>
       </div>
     </div>

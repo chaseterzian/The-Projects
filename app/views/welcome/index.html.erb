@@ -2,7 +2,18 @@
 
   <div class="jumbotron">
     <h1>The Projects</h1>
-    <p>Your life, organized</p>
+    <p>Planning made easy</p>
+          <hr>
+         <p>
+          <div class="font12">
+              Our Community Stats:
+          <%= "#{pluralize(Project.count, "Project")}, " %>
+          <%= "#{pluralize(Task.count, "Task")}, " %>
+          <%= "#{pluralize(Membership.count, "Project Member")}, " %>
+          <%= "#{pluralize(User.count, "User")}, " %>
+          <%= "#{pluralize(Comment.count, "Comment")}" %>
+        </div>
+          <p>
   </div>
 
 <div class="page-header">
